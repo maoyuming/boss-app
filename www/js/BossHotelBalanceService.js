@@ -5,7 +5,7 @@
   'use strict';
 
   angular
-    .module('starter.bossHotelBalanceService')
+    .module('starter.services')
     .service('BossHotelBalanceService', BossHotelBalanceService);
 
   LikeService.$inject = ['DtkHttp'];

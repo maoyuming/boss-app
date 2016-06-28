@@ -5,7 +5,7 @@
   'use strict';
 
   angular
-    .module('dtk.services')
+    .module('starter.services')
     .service('MessageService', MessageService);
 
   UserService.$inject = ['DtkHttp'];
