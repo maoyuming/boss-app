@@ -8,7 +8,7 @@
     .module('starter.services')
     .service('MessageService', MessageService);
 
-  UserService.$inject = ['DtkHttp'];
+  MessageService.$inject = ['DtkHttp'];
 
   function MessageService(DtkHttp) {
     return {

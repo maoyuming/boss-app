@@ -1,0 +1,42 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center" class="bar-energized-crm">
+        <button class="button button-clear" ng-click="closeLoginModal()" style="color:black">返回</button>
+        <h1 class="title">登录系统</h1>
+    </ion-header-bar>
+    <ion-content class="crm-content">
+        <div class="list">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" class="crm-input" placeholder="输入手机号码" ng-model="login.loginname">
+                </label>
+            </div>
+            <div class="item item-input-inset" style="border:0;">
+                <label class="item-input-wrapper">
+                    <input type="text" class="crm-input" placeholder="输入验证码" ng-model="login.verifycode">
+                </label>
+                <button class="button button-small" ng-if="login.showCodeBtn" ng-click="login.sendCode4Phone()">
+                    获取验证码
+                </button>
+                <button class="button button-small" style="min-width: 80px" ng-if="!login.showCodeBtn">{{login.timer + 's'}}</button>
+            </div>
+            <div class="item item-input-inset">
+              <label class="item-input-wrapper">
+                <input type="text" class="crm-input" placeholder="销售手机号" ng-model="login.salePhone">
+              </label>
+            </div>
+            <div class="item item-input-inset">
+              <label class="item-input-wrapper">
+                <input type="text" class="crm-input" placeholder="酒店名称" ng-model="login.hotelName">
+              </label>
+            </div>
+        </div>
+        <div class="padding">
+            <p>如果验证码无法接收, 请拨打400客服电话查询</p>
+            <a href="tel: 13301360605">13301360605</a>
+        </div>
+        <div class="crm-empty10"></div>
+        <div class="padding">
+            <button class="button button-block"  ng-click="login.submit()">登录</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

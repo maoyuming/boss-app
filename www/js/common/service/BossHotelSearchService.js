@@ -8,7 +8,7 @@
     .module('starter.services')
     .service('BossHotelSearchService', BossHotelSearchService);
 
-  LikeService.$inject = ['DtkHttp'];
+  BossHotelSearchService.$inject = ['DtkHttp'];
 
   function BossHotelSearchService(DtkHttp) {
     return {

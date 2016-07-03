@@ -8,7 +8,7 @@
     .module('starter.services')
     .service('BossHotelBalanceService', BossHotelBalanceService);
 
-  LikeService.$inject = ['DtkHttp'];
+  BossHotelBalanceService.$inject = ['DtkHttp'];
 
   function BossHotelBalanceService(DtkHttp) {
     return {

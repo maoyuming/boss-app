@@ -22,11 +22,12 @@
      }
      };*/
     //cservice.duantuke.cc
-    var contextPath = "http://192.168.0.32:8003";
+    var contextPath = "http://cservice.duantuke.cc";
+    //var contextPath = "http://192.168.0.32:8003";
     //var contextPath = "http://100.100.100.43:8081";
     return {
       post: function (url, params) {
-        if (!params.isLogin) {
+        if (LoginInfo.getLoginInfo() && LoginInfo.getLoginInfo().token) {
           params.token = LoginInfo.getLoginInfo().token;
         }
         url = contextPath + url;
