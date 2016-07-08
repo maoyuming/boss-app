@@ -1,6 +1,106 @@
-<ion-view view-title="订单">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>orders</p>
+
+<ion-view view-title="订单管理">
+  <ion-content style="top: 0">
+    <div class="tabs" style="bottom: auto; top: 44px">
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='all']" ng-click="switchTo('all')">
+        待确认
+      </a>
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='prepay']" ng-click="switchTo('prepay')">
+        今日单
+      </a>
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='going']" ng-click="switchTo('going')">
+        不知道啥单
+      </a>
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='done']" ng-click="switchTo('done')">
+        历史订单
+      </a>
+    </div>
+    <ul class="list has-tabs-top">
+      <li class="item"  ng-click="gotoPage('tab.orderDetail')">
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-75">
+            <h3>酒店</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              已离店
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-50">
+            <h3>张三丰</h3>
+          </div>
+          <div class="col-50" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              1331234567
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-75">
+            <h3>2016-01-01 至 2016-10-10</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              没看懂
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: -10px">
+          <div class="col-75">
+            <h3>已支付</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+             ￥200
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li class="item"  ui-sref="order-detail({orderId: order.id})">
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-75">
+            <h3>团队</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              已离店
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-50">
+            <h3>张三丰队长</h3>
+          </div>
+          <div class="col-50" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              1331234567
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: 5px">
+          <div class="col-75">
+            <h3>2016-01-01 至 2016-10-10</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              20人
+            </p>
+          </div>
+        </div>
+        <div class="row row-no-padding" style="margin-bottom: -10px">
+          <div class="col-75">
+            <h3>已支付</h3>
+          </div>
+          <div class="col-25" style="padding-top: 0px;">
+            <p style="font-size: 15px;text-align: right;">
+              ￥200
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>
