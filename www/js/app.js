@@ -23,8 +23,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   /*****************************系统登录 modal - start**********************************/
-  $rootScope.localStorageObj = {};
-
+  $rootScope.localStorageObj = {
+  };
 
   //注册界面
   $ionicModal.fromTemplateUrl('templates/modal/regist.html', {
@@ -54,7 +54,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     //校验是否登录该系统
     $rootScope.localStorageObj = LoginInfo.getLoginInfo();
     if(!$rootScope.localStorageObj){
-     //$rootScope.openLoginModal();
+     $rootScope.openLoginModal();
     }
   });
   $rootScope.openLoginModal = function () {
@@ -153,9 +153,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             UserService.userGentoken(params)
               .then(function (res) {
                 if(res && res.data && res.data.result == 'T'){
-                  $rootScope.localStorageObj.token = res.data.data;
+                  $rootScope.localStorageObj = {
+                    token : res.data.data
+                  }
                   LoginInfo.setLoginInfo($rootScope.localStorageObj);
-                  $rootScope.closeLoginModal();
+                  $rootScope.closeRegistModal();
                 }else{
                   var errorMessage = res.data.errorMessage?res.data.errorMessage:"获取用户凭证失败";
                   console.log(errorMessage);
@@ -188,7 +190,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             submitResult = true;
           }else{
             submitResult = false;
-            var errorMessage = res.data.errorMessage?res.data.errorMessage:"提交验证码失败";
+            var errorMessage = res.errorMessage?res.errorMessage:"提交验证码失败";
             console.log(errorMessage);
             //$cordovaToast.showLongBottom(errorMessage);
           }
@@ -208,7 +210,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             UserService.userGentoken(params)
               .then(function (res) {
                 if(res && res.data && res.data.result == 'T'){
-                  $rootScope.localStorageObj.token = res.data.data;
+                  $rootScope.localStorageObj = {
+                    token : res.data.data
+                  }
                   LoginInfo.setLoginInfo($rootScope.localStorageObj);
                   $rootScope.closeLoginModal();
                 }else{
