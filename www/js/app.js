@@ -133,7 +133,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             submitResult = true;
           }else{
             submitResult = false;
-            var errorMessage = res.data.errorMessage?res.data.errorMessage:"注册失败";
+            var errorMessage = res.errorMessage?res.errorMessage:"注册失败";
             console.log(errorMessage);
             //$cordovaToast.showLongBottom(errorMessage);
           }
@@ -159,7 +159,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                   LoginInfo.setLoginInfo($rootScope.localStorageObj);
                   $rootScope.closeRegistModal();
                 }else{
-                  var errorMessage = res.data.errorMessage?res.data.errorMessage:"获取用户凭证失败";
+                  var errorMessage = res.errorMessage?res.errorMessage:"获取用户凭证失败";
                   console.log(errorMessage);
                   //$cordovaToast.showLongBottom(errorMessage);
                 }
@@ -216,7 +216,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                   LoginInfo.setLoginInfo($rootScope.localStorageObj);
                   $rootScope.closeLoginModal();
                 }else{
-                  var errorMessage = res.data.errorMessage?res.data.errorMessage:"获取用户凭证失败";
+                  var errorMessage = res.errorMessage?res.errorMessage:"获取用户凭证失败";
                   console.log(errorMessage);
                   //$cordovaToast.showLongBottom(errorMessage);
                 }
