@@ -331,6 +331,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
 
+  $ionicConfigProvider.tabs.position('bottom');
 
   // 使angular $http post提交和jQuery一致
   $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
