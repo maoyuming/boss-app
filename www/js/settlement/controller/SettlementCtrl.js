@@ -3,14 +3,19 @@ angular.module('starter.controllers')
               function ($rootScope,$scope, $state,$location,$timeout,SettlementService) {
       activate();
       function activate(){
+        querybalance();
+        queryfeetypes();
+      };
+      //查询余额
+      function querybalance(){
         var params = {
-          hotelId: $state.hotelId,
-          bossId:$state.bossId
+          hotelId: 1,//$state.hotelId,
+          bossId:1//$state.bossId
         };
         SettlementService.bossScBalance(params)
           .success(function (res) {
             if(res && res.result && res.result == "T"){
-              $scope.balance = 100;
+              $scope.balance = res.data;
             }else{
               console.log('balance == null');
             }
@@ -18,24 +23,21 @@ angular.module('starter.controllers')
           .error(function (error) {
             console.log('error = ' + error);
           });
+      };
+      //查询收支类型列表
+      function queryfeetypes(){
+        SettlementService.queryfeetypes()
+          .success(function (res) {
+            if(res && res.result && res.result == "T"){
+              $scope.feetypes = res.data;
+            }else{
+              console.log('feetypes.length == null');
+            }
+          })
+          .error(function (error) {
+            console.log('error = ' + error);
+          });
       }
-      //function querybalance(){
-      //  var params = {
-      //    hotelId: $state.hotelId,
-      //    bossId:$state.bossId
-      //  };
-      //  SettlementService.bossScBalance(params)
-      //    .success(function (res) {
-      //      if(res && res.result && res.result == "T"){
-      //        $scope.balance = 100;
-      //      }else{
-      //        console.log('balance == null');
-      //      }
-      //    })
-      //    .error(function (error) {
-      //      console.log('error = ' + error);
-      //    });
-      //}
 
       $scope.gotoPage = function (to) {
         $timeout(function () {

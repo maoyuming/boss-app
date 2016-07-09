@@ -309,6 +309,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
         }
       }
     })
+    .state('tab.settlementDetail', {
+      url: '/settlement/detail/:feetype',
+      views: {
+        'tab-settlement': {
+          templateUrl: 'templates/settlement/settlement-detail.html',
+          controller: 'SettlementDetailCtrl'
+        }
+      }
+    })
   .state('tab.my', {
     url: '/my',
     views: {

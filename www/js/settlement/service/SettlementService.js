@@ -22,6 +22,13 @@
         return DtkHttp.post(act, params);
       },
       /**
+       * 查询收支类型列表
+       */
+      queryfeetypes    : function () {
+        var act = '/boss/sc/allFeeTypes ';
+        return DtkHttp.post(act, null);
+      },
+      /**
        * 发起提现申请
        * @param params http header: token:Zd8H+oYcB1bGJtkxaSOjpnZ03+roT+MGMBq4dC56w0Y=
        Long bossId 老板id

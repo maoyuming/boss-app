@@ -9,40 +9,16 @@
       </div>
       <div class="item item-divider">
         <div style="margin-bottom: 6px;">收入详情(单位:元)</div>
-        <div>余额 = 住宿+餐饮+团体+其他-体现</div>
-      </div>
-      <div class="item" href="#">
-        账户流水
-        <span class="item-note">
-          查看<i class="ion-chevron-right"></i>
-        </span>
-      </div>
-      <div class="item" href="#">
-        客房流水
-        <span class="item-note">
-          查看<i class="ion-chevron-right"></i>
-        </span>
+        <div>余额 = 住宿+餐饮+团体+其他-返点-提现</div>
       </div>
 
-      <div class="item" href="#">
-        餐饮收入
+      <div ng-repeat="feetype in feetypes" ui-sref="tab.settlementDetail({feetype: feetype.key})">
+        <div class="item">
+          {{feetype.value}}{{feetype.key}}
         <span class="item-note">
           查看<i class="ion-chevron-right"></i>
         </span>
-      </div>
-
-      <div class="item" href="#">
-        提现记录
-        <span class="item-note">
-          查看<i class="ion-chevron-right"></i>
-        </span>
-      </div>
-
-      <div class="item" href="#">
-        历史账单
-        <span class="item-note">
-          查看<i class="ion-chevron-right"></i>
-        </span>
+        </div>
       </div>
     </div>
   </ion-content>
