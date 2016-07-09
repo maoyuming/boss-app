@@ -22,27 +22,28 @@
      }
      };*/
     //cservice.duantuke.cc
-    var contextPath = "http://cservice.duantuke.cc";
+    var contextPath = "http://bservice.duantuke.cc";
     //var contextPath = "http://192.168.0.32:8003";
     //var contextPath = "http://100.100.100.43:8081";
     return {
-      post: function (url, params) {
-        if (LoginInfo.getLoginInfo() && LoginInfo.getLoginInfo().token) {
-          params.token = LoginInfo.getLoginInfo().token;
-        }
-        url = contextPath + url;
-        var deferred = $q.defer();
-        return $http.post(url, params, {timeout: 10000})
-          .success(function (result) {
-            //isLogin(error);
-            deferred.resolve(result);
-          })
-          .error(function (error) {
-            //isLogin(error);
-            deferred.reject(error);
-          });
-        return deferred.promise;
-      },
+        post: function (url, params) {
+            var token = '';
+            if (LoginInfo && LoginInfo.getLoginInfo() && LoginInfo.getLoginInfo().token) {
+                token = LoginInfo.getLoginInfo().token;
+            }
+            url = contextPath + url;
+            var deferred = $q.defer();
+            return $http.post(url, params, {timeout: 10000, headers: {token: token}})
+                .success(function (result) {
+                    //isLogin(error);
+                    deferred.resolve(result);
+                })
+                .error(function (error) {
+                    //isLogin(error);
+                    deferred.reject(error);
+                });
+            return deferred.promise;
+        },
 
       get: function (url) {
         url = Settings.Context.path + url;

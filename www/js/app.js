@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','dtk.order'])
 
 .run(function($rootScope,$ionicPlatform,$ionicModal,$timeout,MessageService,UserService) {
   $ionicPlatform.ready(function() {
@@ -52,10 +52,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $rootScope.loginModal = modal;
 
     //校验是否登录该系统
-    $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+/*    $rootScope.localStorageObj = LoginInfo.getLoginInfo();
     if(!$rootScope.localStorageObj){
      $rootScope.openLoginModal();
-    }
+    }*/
   });
   $rootScope.openLoginModal = function () {
     $rootScope.loginModal.show();
@@ -375,3 +375,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 angular.module('starter.controllers', []);
 angular.module('starter.services', []);
+angular.module('dtk.order', []);
