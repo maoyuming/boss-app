@@ -22,8 +22,8 @@
      }
      };*/
     //cservice.duantuke.cc
-    //var contextPath = "http://bservice.duantuke.cc";
-    var contextPath = "http://localhost:8081";
+    var contextPath = "http://bservice.duantuke.cc";
+    //var contextPath = "http://localhost:8081";
     //var contextPath = "http://192.168.0.32:8003";
     //var contextPath = "http://100.100.100.43:8081";
     return {

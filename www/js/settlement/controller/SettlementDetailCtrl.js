@@ -9,8 +9,8 @@ angular.module('starter.controllers')
                 function queryfeedetail() {
                   var feetype = $stateParams.feetype;
                   var params = {
-                    hotelId: 1,//$state.hotelId,
-                    bossId: 1,//$state.bossId
+                    hotelId: $state.hotelId,
+                    bossId: $state.bossId,
                     feeType:feetype
                   };
                   SettlementDetailService.bossScFeeDetail(params)
