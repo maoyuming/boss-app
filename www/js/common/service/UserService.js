@@ -53,7 +53,16 @@
       hotelList : function (params) {
         var act = '/boss/hotel/list';
         return DtkHttp.post(act, params);
+      },
+      /**
+       * 老板登陆信息
+       * @returns {*}
+       */
+      getLoginUser : function () {
+        var act = '/boss/user/query';
+        return DtkHttp.post(act, null);
       }
+
     };
 
   }

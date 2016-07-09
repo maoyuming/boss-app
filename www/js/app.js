@@ -224,7 +224,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
                    })
                    .error(function (error) {
                           console.log('error = ' + error);
-                    })
+                    });
+                  UserService.getLoginUser()
+                    .success(function (res) {
+                      $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+                      $rootScope.localStorageObj.bossId  = res.data.bossId;
+                      LoginInfo.setLoginInfo($rootScope.localStorageObj);
+                    });
 
 
                   $rootScope.closeLoginModal();
@@ -322,7 +328,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
         }
       }
     })
-  .state('tab.my', {
+    .state('tab.settlementDetail', {
+      url: '/settlement/detail/:feetype',
+      views: {
+        'tab-settlement': {
+          templateUrl: 'templates/settlement/settlement-detail.html',
+          controller: 'SettlementDetailCtrl'
+        }
+      }
+    })
+    .state('tab.my', {
     url: '/my',
     views: {
       'tab-my': {

@@ -9,8 +9,8 @@ angular.module('starter.controllers')
       //查询余额
       function querybalance(){
         var params = {
-          hotelId: $state.hotelId,
-          bossId:$state.bossId
+          hotelId: $rootScope.localStorageObj.hotelId,
+          bossId:$rootScope.localStorageObj.bossId
         };
         SettlementService.bossScBalance(params)
           .success(function (res) {
