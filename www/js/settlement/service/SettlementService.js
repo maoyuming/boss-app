@@ -1,23 +1,20 @@
-/**
- * 点赞服务
- */
 (function () {
   'use strict';
 
   angular
     .module('starter.services')
-    .service('BossHotelBalanceService', BossHotelBalanceService);
+    .service('SettlementService', SettlementService);
 
-  BossHotelBalanceService.$inject = ['DtkHttp'];
+  SettlementService.$inject = ['DtkHttp'];
 
-  function BossHotelBalanceService(DtkHttp) {
+  function SettlementService(DtkHttp) {
     return {
       /**********************结算接口************************/
       /**
        * 查询账户余额
        * @param params http header: token:Zd8H+oYcB1bGJtkxaSOjpnZ03+roT+MGMBq4dC56w0Y=
-                       Long bossId 老板id
-                       Long hotelId 酒店id
+       Long bossId 老板id
+       Long hotelId 酒店id
        * @returns {*}
        */
       bossScBalance    : function (params) {
@@ -27,9 +24,9 @@
       /**
        * 发起提现申请
        * @param params http header: token:Zd8H+oYcB1bGJtkxaSOjpnZ03+roT+MGMBq4dC56w0Y=
-                       Long bossId 老板id
-                       Long hotelId 酒店id
-                       BigDecimal sum 提现金额
+       Long bossId 老板id
+       Long hotelId 酒店id
+       BigDecimal sum 提现金额
        * @returns {*}
        */
       bossScWithdrawl  : function (params) {
@@ -39,8 +36,8 @@
       /**
        * 查询提现申请进度
        * @param params http header: token:Zd8H+oYcB1bGJtkxaSOjpnZ03+roT+MGMBq4dC56w0Y=
-                        Long bossId 老板id
-                        Long hotelId 酒店id
+       Long bossId 老板id
+       Long hotelId 酒店id
        * @returns {*}
        */
       bossScWithdrawlStatus   : function (params) {
