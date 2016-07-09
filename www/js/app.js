@@ -52,10 +52,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
     $rootScope.loginModal = modal;
 
     //校验是否登录该系统
-/*    $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+    $rootScope.localStorageObj = LoginInfo.getLoginInfo();
     if(!$rootScope.localStorageObj){
      $rootScope.openLoginModal();
-    }*/
+    }
   });
   $rootScope.openLoginModal = function () {
     $rootScope.loginModal.show();
@@ -210,10 +210,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
             UserService.userGentoken(params)
               .then(function (res) {
                 if(res && res.data && res.data.result == 'T'){
-                  $rootScope.localStorageObj = {
-                    token : res.data.data
-                  }
-                  LoginInfo.setLoginInfo($rootScope.localStorageObj);
+                    $rootScope.localStorageObj = {
+                        token : res.data.data
+                    }
+                    LoginInfo.setLoginInfo($rootScope.localStorageObj);
+
+                  UserService.hotelList(res.data.data)
+                   .success(function (res) {
+                          var hotelId = res.data[0].hotelId;
+                          $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+                          $rootScope.localStorageObj.hotelId  = hotelId;
+                          LoginInfo.setLoginInfo($rootScope.localStorageObj);
+                   })
+                   .error(function (error) {
+                          console.log('error = ' + error);
+                    })
+
+
                   $rootScope.closeLoginModal();
                 }else{
                   var errorMessage = res.errorMessage?res.errorMessage:"获取用户凭证失败";
@@ -273,7 +286,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
       }
     })
     .state('tab.orderDetail', {
-      url: '/order/detail',
+      url: '/order/:orderId',
       views: {
         'tab-orders': {
           templateUrl: 'templates/order/order-detail.html',
@@ -309,15 +322,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
         }
       }
     })
-    .state('tab.settlementDetail', {
-      url: '/settlement/detail/:feetype',
-      views: {
-        'tab-settlement': {
-          templateUrl: 'templates/settlement/settlement-detail.html',
-          controller: 'SettlementDetailCtrl'
-        }
-      }
-    })
   .state('tab.my', {
     url: '/my',
     views: {
@@ -331,7 +335,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
 
-  $ionicConfigProvider.tabs.position('bottom');
 
   // 使angular $http post提交和jQuery一致
   $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';

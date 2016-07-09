@@ -93,7 +93,7 @@
       },
 
       detail: function (params) {
-        var act = '/customer/order/'+params.orderId;
+        var act = '/boss/order/'+params.orderId;
         return DtkHttp.post(act);
       }
     };

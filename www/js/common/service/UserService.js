@@ -51,7 +51,7 @@
        * @returns {*}
        */
       hotelList : function (params) {
-        var act = '/hotel/list';
+        var act = '/boss/hotel/list';
         return DtkHttp.post(act, params);
       }
     };

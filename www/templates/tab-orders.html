@@ -1,6 +1,10 @@
 
 <ion-view view-title="订单管理">
   <ion-content style="top: 0">
+      <ion-refresher
+              pulling-text="下拉刷新"
+              on-refresh="orders.refresh()">
+      </ion-refresher>
     <div class="tabs" style="bottom: auto; top: 44px">
       <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='all']" ng-click="switchTo('all')">
         待确认
@@ -9,31 +13,31 @@
         今日单
       </a>
       <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='going']" ng-click="switchTo('going')">
-        不知道啥单
+        预订单
       </a>
       <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='done']" ng-click="switchTo('done')">
         历史订单
       </a>
     </div>
     <ul class="list has-tabs-top">
-      <li class="item"  ng-click="gotoPage('tab.orderDetail')">
+      <li class="item" ng-repeat="order in orders.data" ng-click="gotoOrderDetail(order.id)">
         <div class="row row-no-padding" style="margin-bottom: 5px">
           <div class="col-75">
-            <h3>酒店</h3>
+            <h3>{{order.type}}</h3>
           </div>
           <div class="col-25" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
-              已离店
+                {{order.status}}
             </p>
           </div>
         </div>
         <div class="row row-no-padding" style="margin-bottom: 5px">
           <div class="col-50">
-            <h3>{{order.supplierName}}</h3>
+            <h3>{{order.contact}}</h3>
           </div>
           <div class="col-50" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
-              1331234567
+                {{order.contactPhone}}
             </p>
           </div>
         </div>
@@ -49,58 +53,24 @@
         </div>
         <div class="row row-no-padding" style="margin-bottom: -10px">
           <div class="col-75">
-            <h3>已支付</h3>
+            <h3>{{order.payStatus}}</h3>
           </div>
           <div class="col-25" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
-             ￥200
-            </p>
-          </div>
-        </div>
-      </li>
-
-      <li class="item"  ui-sref="order-detail({orderId: order.id})">
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-75">
-            <h3>团队</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-              已离店
-            </p>
-          </div>
-        </div>
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-50">
-            <h3>张三丰队长</h3>
-          </div>
-          <div class="col-50" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-              1331234567
-            </p>
-          </div>
-        </div>
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-75">
-            <h3>2016-01-01 至 2016-10-10</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-              20人
-            </p>
-          </div>
-        </div>
-        <div class="row row-no-padding" style="margin-bottom: -10px">
-          <div class="col-75">
-            <h3>已支付</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-              ￥200
+                {{order.totalPrice}}
             </p>
           </div>
         </div>
       </li>
     </ul>
+
+
+
+      <ion-infinite-scroll
+              ng-if="orders.moreDataCanBeLoaded"
+              on-infinite="orders.loadMore()"
+              distance="5%"
+              spinner="dots">
+      </ion-infinite-scroll>
   </ion-content>
 </ion-view>
