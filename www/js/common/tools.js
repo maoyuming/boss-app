@@ -223,6 +223,12 @@ var LoginInfo = {
   setLoginInfo: function(loginInfo) {
     Lockr.set('username_localStorage', loginInfo);
   },
+  /**
+   * 删除本地用户信息
+   */
+  rm: function() {
+    Lockr.rm('username_localStorage');
+  },
 
   /**
    * 获取本地七牛上传token

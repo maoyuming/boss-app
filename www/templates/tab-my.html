@@ -1,7 +1,7 @@
 <ion-view view-title="我的">
   <ion-content>
     <div class="list">
-      <div class="item" href="#">
+      <div class="item" href="#" ng-click="openModifyMyPhoneModal()">
         <i class="ion-person"></i>
         龙泉山庄(1301360605)
         <span class="item-note">
@@ -58,12 +58,11 @@
           <i class="ion-chevron-right"></i>
         </span>
       </div>
-
       <div class="item" href="#">
         <i class="ion-edit"></i>
         检查更新
         <span class="item-note">
-          <i class="ion-chevron-right"></i>
+          1.0.0  <i class="ion-chevron-right"></i>
         </span>
       </div>
 
@@ -82,8 +81,9 @@
           400-1234567
         </span>
       </div>
-
-
+      <button class="button button-full button-positive" ng-click="logout()">
+        退出登录
+      </button>
     </div>
   </ion-content>
 </ion-view>
