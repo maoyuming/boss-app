@@ -6,16 +6,16 @@
               on-refresh="orders.refresh()">
       </ion-refresher>
     <div class="tabs" style="bottom: auto; top: 44px">
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='all']" ng-click="switchTo('all')">
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toBeConfirmed']" ng-click="switchTo('toBeConfirmed')">
         待确认
       </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='prepay']" ng-click="switchTo('prepay')">
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toDay']" ng-click="switchTo('toDay')">
         今日单
       </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='going']" ng-click="switchTo('going')">
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='future']" ng-click="switchTo('future')">
         预订单
       </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='done']" ng-click="switchTo('done')">
+      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='history']" ng-click="switchTo('history')">
         历史订单
       </a>
     </div>
@@ -37,13 +37,13 @@
           </div>
           <div class="col-50" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
-                {{order.contactPhone}}
+                {{order.phone}}
             </p>
           </div>
         </div>
         <div class="row row-no-padding" style="margin-bottom: 5px">
           <div class="col-75">
-            <h3>2016-01-01 至 2016-10-10</h3>
+            <h3>{{order.beginTime}} 至 {{order.endTime}}</h3>
           </div>
           <div class="col-25" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
@@ -63,7 +63,6 @@
         </div>
       </li>
     </ul>
-
 
 
       <ion-infinite-scroll
