@@ -15,20 +15,13 @@
         var vm = this;
         vm.title = 'OrdersCtrl';
 
-        var tabNames = ['all', 'prepay', 'going', 'done', 'canceled'];
+        var tabNames = ['toBeConfirmed', 'toDay', 'future', 'history'];
 
         activate();
 
-        ////////////////
-
         function activate() {
-            $scope.gotoPage = function (to) {
-                $timeout(function () {
-                    $state.go(to);
-                }, 150);
-            };
-
-            $scope.currentTab = 'going';
+            $scope.status = '30';
+            $scope.currentTab = 'toBeConfirmed';
             $scope.orderData = [];
             $scope.switchTo = function (tabName) {
                 if (!LoginInfo.getLoginInfo()) {
@@ -39,78 +32,43 @@
                     return _name == tabName
                 });
                 if (!idx) {
-                    tabName = 'going';
+                    tabName = 'toBeConfirmed';
                 }
                 $scope.currentTab = tabName;
 
-                var status = '30,50';
-
-                switch (tabName) {
-                    case 'all':
-                        status = '0,30,50,100,200,250,500';
-                        break;
-                    case 'toBeConfirmed':
-                        status = '30';
-                        break;
-                    case 'toDay':
-                        status = '0';
-                        break;
-                    case 'Future':
-                        status = '100,200';
-                        break;
-                    case 'history':
-                        status = '250,500';
-                        break;
+                function clear(){
+                    $scope.status = '';
+                    $scope.beginTime = '';
+                    $scope.endTime = '';
                 }
 
-
+                switch (tabName) {
+                    case 'toBeConfirmed':
+                        clear();
+                        $scope.status = '30';
+                        break;
+                    case 'toDay':
+                        clear();
+                        $scope.status = '50';
+                        $scope.beginTime = moment().format('YYYY-MM-DD');
+                        break;
+                    case 'future':
+                        clear();
+                        $scope.status = '50';
+                        $scope.beginTime = moment().add('days',1).format('YYYY-MM-DD');
+                        break;
+                    case 'history':
+                        clear();
+                        $scope.status = '200';
+                        break;
+                }
                 console.log($scope.currentTab);
-                /*   OrderService.list({
-                 pageNo: 1,
-                 pageSize: 10,
-                 hotelId: 869,
-                 status: status
-                 }).success(function (result) {
-                 console.log(111, result);
-                 if (result.result == 'true') {
-                 var data = [];
-                 _.each(result.data, function (order) {
-                 var _order = _.clone(order);
-                 */
-                /*                _order.beginTimeStr = moment(_order.beginTime).format('YYYY-MM-DD');
-                 _order.endTimeStr = moment(_order.endTime).format('YYYY-MM-DD');
-                 _order.createTimeStr = moment(_order.createTime).format('YYYY-MM-DD');*/
-                /*
-                 data.push(_order);
-                 });
-                 $scope.orderData = data;
-                 console.log(result.data);
-                 }
-                 })
-                 .error(function (result) {
-
-                 });*/
+                $scope.orders.refresh();
             };
-
-            $scope.switchTo($scope.currentTab);
         }
-
 
         //查询订单更多
         $scope.orders = {
-            search: {
-                filter: {
-
-                },
-                doAct: function () {
-                    if (this.timer) {
-                        $timeout.cancel(this.timer);
-                    }
-                    this.timer = $timeout(function () {
-                        $scope.orders.refresh();
-                    }, 500);
-                }
-            },
             page: {
                 pageNo: 1,
                 pageSize: 10,
@@ -118,19 +76,30 @@
             },
             loaded: false,
             data: [],
-            loadData: function (okFunc) {
+            loadData: function () {
                 var _this = this;
                 var params = {
                     pageNo: 1,// 当前页(非必填 默认1)
                     pageSize: 10,// 每页分页数(非必填 默认10)
                     hotelId:  $rootScope.localStorageObj.hotelId,
-                    status: status
+                    status: $scope.status,
+                    beginTime: $scope.beginTime,
+                    endTime: $scope.endTime
                 };
 
                 OrderService.list(params)
                     .success(function (res) {
                         if (res && res.result) {
                             var _data = res.data;
+
+                            var data = [];
+                            _.each(_data, function (order) {
+                                var _order = _.clone(order);
+                                _order.beginTime = moment(_order.beginTime).format('YYYY-MM-DD');
+                                _order.endTime = moment(_order.endTime).format('YYYY-MM-DD');
+                                data.push(_order);
+                            });
+                            _data = data;
 
                             if (!_data || _data.length <= 0) {
                                 if (_this.data.length <= 0) {
@@ -169,7 +138,7 @@
                 _this.page.pageNo = 1;
                 _this.loadData(function () {
                     _this.data = [];
-                });
+                }());
             }
         };
 
