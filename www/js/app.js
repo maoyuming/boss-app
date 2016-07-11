@@ -328,6 +328,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
         }
       }
     })
+    .state('tab.settlementApplyList', {
+      url: '/settlement/applyList',
+      views: {
+        'tab-settlement': {
+          templateUrl: 'templates/settlement/settlement-apply-list.html',
+          controller: 'SettlementApplyListCtrl'
+        }
+      }
+    })
     .state('tab.settlementDetail', {
       url: '/settlement/detail/:feetype',
       views: {

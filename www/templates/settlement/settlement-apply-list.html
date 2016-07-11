@@ -1,0 +1,17 @@
+<ion-view view-title="提现进度">
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="item in items">
+        <div class="item">
+          {{item.createTimeDesc}}      提现金额:{{item.cash}}
+        <span class="item-note">
+          状态:{{item.statusdesc}}
+        </span>
+        </div>
+      </div>
+      <div class='item text-center' ng-if="items.length==0">
+        <p>没有提现进度信息</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
