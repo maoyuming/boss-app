@@ -255,7 +255,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
   /*****************************系统登录modal - end **********************************/
 })
 
-.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
+.config(function($stateProvider, $ionicConfigProvider,$urlRouterProvider,$httpProvider) {
+
+  $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicConfigProvider.platform.ios.backButton.icon('ion-ios-arrow-thin-left');
+  $ionicConfigProvider.platform.android.backButton.icon('ion-android-arrow-back');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router

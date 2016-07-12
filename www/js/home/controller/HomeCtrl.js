@@ -11,10 +11,11 @@
     /* @ngInject */
     function HomeCtrl($rootScope, $scope, $state, $stateParams, $timeout, OrderService,SettlementService) {
 
-           getCount(50,moment().format('YYYY-MM-DD'));
-           getCount(30,'');
-           getBalanceAmount();
-
+        if($rootScope.localStorageObj){
+          getCount(50,moment().format('YYYY-MM-DD'));
+          getCount(30,'');
+          getBalanceAmount();
+        }
 
            $scope.home = {};
            function getCount(status,time){
