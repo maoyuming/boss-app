@@ -95,7 +95,13 @@
       detail: function (params) {
         var act = '/boss/order/'+params.orderId;
         return DtkHttp.post(act);
+      },
+
+      getOrderNum: function (params) {
+        var act = '/boss/order/getOrderNum';
+        return DtkHttp.post(act,params);
       }
+
     };
   }
 })();
