@@ -260,3 +260,78 @@ var Tip = {
 	}
 };
 
+function orderStatusTranslate (code){
+    var desc = '';
+    switch (code) {
+        case 30:
+            desc = "待确认";
+            break;
+        case 50:
+            desc = "已确认";
+            break;
+        case 200:
+            desc = "已完成";
+            break;
+        case 250:
+            desc = "用户未到店";
+            break;
+        case 500:
+            desc = "取消";
+            break;
+    }
+    return desc;
+}
+
+function payStatusTranslate (code){
+    var desc = '';
+    switch (code) {
+        case 10:
+            desc = "无需支付";
+            break;
+        case 30:
+            desc = "等待支付";
+            break;
+        case 50:
+            desc = "支付成功";
+            break;
+        case 70:
+            desc = "支付失败";
+            break;
+        case 90:
+            desc = "已退款";
+            break;
+    }
+    return desc;
+}
+
+function payTypeTranslate (code){
+    var desc = '';
+    switch (code) {
+        case 100:
+            desc = "预付款";
+            break;
+        case 200:
+            desc = "在线支付";
+            break;
+    }
+    return desc;
+}
+
+function orderTypeTranslate (code){
+    var desc = '';
+    var num = code.substr(0, 3);
+    var a = num % 10;
+    var b = num / 10 % 10;
+    var c = num / 100 % 10;
+
+    if(a==1){
+        desc = '团体';
+    }else if(b==1){
+        desc = '餐饮';
+    }else if(c==1){
+        desc = '住宿';
+    }else{
+        desc = '其他';
+    }
+    return desc;
+}

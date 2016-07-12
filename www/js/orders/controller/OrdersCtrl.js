@@ -97,6 +97,9 @@
                                 var _order = _.clone(order);
                                 _order.beginTime = moment(_order.beginTime).format('YYYY-MM-DD');
                                 _order.endTime = moment(_order.endTime).format('YYYY-MM-DD');
+                                _order.orderStatus =  orderStatusTranslate (_order.status);
+                                _order.paystatus =  payStatusTranslate (_order.payStatus);
+                                _order.orderType =  orderTypeTranslate (_order.flag);
                                 data.push(_order);
                             });
                             _data = data;

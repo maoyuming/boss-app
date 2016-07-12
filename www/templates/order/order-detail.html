@@ -4,12 +4,12 @@
       <li class="item">
         <div class="row row-no-padding" style="margin-bottom: 5px">
           <div class="col-75">
-            <p>{{order.status}}</p>
-            <p style="white-space: normal">房间保留到2016年6月28号中午12:00</p>
+            <p>{{order.orderStatus}}</p>
+            <p style="white-space: normal">有效期至{{order.checkOutDate}}中午12:00</p>
           </div>
           <div class="col-25" style="padding-top: 0px;">
             <p style="font-size: 15px;text-align: right;">
-              住宿
+                {{order.orderType}}
             </p>
           </div>
         </div>
@@ -17,12 +17,11 @@
       <li class="item">
         <div class="row row-no-padding">
           <div class="col-75">
-            <p>已入账 ￥200</p>
-            <p style="white-space: normal">在线支付 房费(1间*2晚)</p>
+            <p style="white-space: normal">在线支付 总金额</p>
           </div>
           <div class="col-25">
             <p style="font-size: 15px;text-align: right;">
-              ￥200
+              ￥{{order.orderPrice}}
             </p>
           </div>
         </div>
@@ -30,30 +29,23 @@
       <li class="item">
         <div class="row row-no-padding" style="margin-bottom: 10px">
           <div class="col-90">
-            <p>{{order.contact}}|电话：{{order.phone}}</p>
+            <p>联系人：{{order.contact}}</p>
           </div>
         </div>
-        <div class="row row-no-padding" style="margin-bottom: 10px">
-          <div class="col-90">
-            <p>标准间－手机专享价</p>
+          <div class="row row-no-padding" style="margin-bottom: 10px">
+              <div class="col-90">
+                  <p>电话：{{order.phone}}</p>
+              </div>
           </div>
-        </div>
-
         <div class="row row-no-padding" style="margin-bottom: 10px">
           <div class="col-90">
-            <p>06月09日 - 06月11日共2晚*1间</p>
-          </div>
-        </div>
-
-        <div class="row row-no-padding" style="margin-bottom: 10px">
-          <div class="col-90">
-            <p>支付成功，房间整晚保留</p>
+            <p>预期到店时间：{{order.checkInDate}}</p>
           </div>
         </div>
 
         <div class="row row-no-padding" style="">
           <div class="col-90">
-            <p>用户备注：安排无烟房间</p>
+            <p>用户备注：{{order.memo}}</p>
           </div>
         </div>
       </li>
@@ -66,25 +58,19 @@
         </div>
         <div class="row row-no-padding" style="margin-bottom: 10px">
           <div class="col-90">
-            <p>订单号:{{order.flag}}</p>
+            <p>订单号：{{order.id}}</p>
           </div>
         </div>
 
         <div class="row row-no-padding" style="margin-bottom: 10px">
           <div class="col-90">
-            <p>下单时间：2016-03-01 18:00</p>
+            <p>下单时间：{{order.createTime}}</p>
           </div>
         </div>
 
         <div class="row row-no-padding" style="margin-bottom: 10px">
           <div class="col-90">
-            <p>支付状态：已支付</p>
-          </div>
-        </div>
-
-        <div class="row row-no-padding" style="margin-bottom: 10px">
-          <div class="col-90">
-            <p>结算状态：已入账</p>
+            <p>支付状态：{{order.payStatus}}</p>
           </div>
         </div>
       </li>

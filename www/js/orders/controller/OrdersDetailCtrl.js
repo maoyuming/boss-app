@@ -14,11 +14,7 @@
     function OrderDetailCtrl($scope, $state, $stateParams, OrderService, $timeout) {
         var vm = this;
         vm.title = 'OrderDetailCtrl';
-
         activate();
-
-        ////////////////
-
         function activate() {
             var orderId = $stateParams.orderId;
 
@@ -63,6 +59,10 @@
                 });
             };
 
+
+
+
+
             OrderService.detail({orderId: orderId})
                 .success(function (result) {
                     console.log(result);
@@ -70,17 +70,20 @@
                         var _data = {
                             id: result.data.id,
                             totalPrice: result.data.totalPrice,
-       /*                     checkInDate: moment(result.data.beginTime).format('YYYY-MM-DD'),
-                            checkOutDate: moment(result.data.endTime).format('YYYY-MM-DD'),
-                            createTime: moment(result.data.createTime).format('YYYY-MM-DD HH:mm:ss'),*/
+                            checkInDate: moment(result.data.beginTime).format('YYYY年MM月DD日'),
+                            checkOutDate: moment(result.data.endTime).format('YYYY年MM月DD日'),
+                            createTime: moment(result.data.createTime).format('YYYY-MM-DD HH:mm:ss'),
                             contact: result.data.contact,
-                            phone: result.data.contactPhone.substr(0, 3) + '****' + result.data.contactPhone.substr(7),
+                            //phone: result.data.contactPhone.substr(0, 3) + '****' + result.data.contactPhone.substr(7),
+                            phone: result.data.contactPhone,
                             memo: result.data.memo,
+                            orderPrice: result.data.totalPrice,
                             hotelName: result.data.supplierName,
-                            status: result.data.status,
-                            customerId: result.data.customerId
+                            customerId: result.data.customerId,
+                            orderStatus: orderStatusTranslate (result.data.status),
+                            payStatus: payStatusTranslate (result.data.payStatus),
+                            orderType: orderTypeTranslate (result.data.flag)
                         };
-
                         var orderDetails = [];
 
                         _.each(result.data.orderDetails, function (detail) {
