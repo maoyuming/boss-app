@@ -17,7 +17,9 @@
           getBalanceAmount();
         }
 
-           $scope.home = {};
+           $scope.home = {
+               hotelName:$rootScope.localStorageObj.hotelName
+           };
            function getCount(status,time){
                 var params = {
                     hotelId:  $rootScope.localStorageObj.hotelId,
@@ -41,7 +43,6 @@
 
 
             function getBalanceAmount(){
-
                 var params = {
                     hotelId: $rootScope.localStorageObj.hotelId,
                     bossId:$rootScope.localStorageObj.bossId

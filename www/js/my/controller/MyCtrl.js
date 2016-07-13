@@ -26,8 +26,8 @@ angular.module('starter.controllers')
 
       //保存我的手机
       $scope.my = {
-        hotelName:null,
-        phone:null,
+        hotelName:$rootScope.localStorageObj.hotelName,
+        phone:$rootScope.localStorageObj.phone,
         //保存
         saveMyPhone : function(){
           $rootScope.closeModifyMyPhoneModal();

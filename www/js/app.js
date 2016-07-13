@@ -218,8 +218,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
                   UserService.hotelList(res.data.data)
                    .success(function (res) {
                           var hotelId = res.data[0].hotelId;
+                          var hotelName = res.data[0].hotelName;
                           $rootScope.localStorageObj = LoginInfo.getLoginInfo();
                           $rootScope.localStorageObj.hotelId  = hotelId;
+                          $rootScope.localStorageObj.hotelName  = hotelName;
                           LoginInfo.setLoginInfo($rootScope.localStorageObj);
                    })
                    .error(function (error) {
@@ -229,6 +231,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
                     .success(function (res) {
                       $rootScope.localStorageObj = LoginInfo.getLoginInfo();
                       $rootScope.localStorageObj.bossId  = res.data.bossId;
+                      $rootScope.localStorageObj.phone  = res.data.phone;
                       LoginInfo.setLoginInfo($rootScope.localStorageObj);
                     });
 
