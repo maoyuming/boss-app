@@ -76,6 +76,10 @@
             $scope.goSettlementApply = function goSettlementApply(){
                 $state.go("tab.settlementApply");
             }
+
+            $scope.goChatList = function goChatList(){
+                $state.go("tab.chat");
+            }
     };
 
 })();

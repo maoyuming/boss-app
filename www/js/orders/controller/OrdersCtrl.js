@@ -70,7 +70,7 @@
         //查询订单更多
         $scope.orders = {
             page: {
-                pageNo: 1,
+                pageNo: 0,
                 pageSize: 10,
                 total: 0
             },
@@ -79,7 +79,7 @@
             loadData: function () {
                 var _this = this;
                 var params = {
-                    pageNo: 1,// 当前页(非必填 默认1)
+                    pageNo: _this.page.pageNo,// 当前页(非必填 默认1)
                     pageSize: 10,// 每页分页数(非必填 默认10)
                     hotelId:  $rootScope.localStorageObj.hotelId,
                     status: $scope.status,
@@ -90,6 +90,7 @@
                 OrderService.list(params)
                     .success(function (res) {
                         if (res && res.result) {
+                            var b = _this.page.pageNo;
                             var _data = res.data;
 
                             var data = [];

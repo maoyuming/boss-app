@@ -354,15 +354,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
       }
     })
     .state('tab.my', {
-    url: '/my',
-    views: {
-      'tab-my': {
-        templateUrl: 'templates/tab-my.html',
-        controller: 'MyCtrl'
-      }
-    }
-  });
+        url: '/my',
+        views: {
+          'tab-my': {
+            templateUrl: 'templates/tab-my.html',
+            controller: 'MyCtrl'
+          }
+        }
+     })
 
+    .state('tab.chat', {
+        url: '/chats',
+        views: {
+            'tab-my': {
+                templateUrl: 'templates/tab-chats.html',
+                controller: 'MyCtrl'
+            }
+        }
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
 

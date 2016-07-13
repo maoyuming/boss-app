@@ -59162,7 +59162,7 @@ function($scope, $element, $attrs, $compile, $timeout, $ionicNavBarDelegate, $io
 
 
   self.createHeaderBar = function(isActive) {
-    var containerEle = jqLite('<div class="nav-bar-block">');
+    var containerEle = jqLite('<div class="bar bar-header bar-positive">');
     ionic.DomUtil.cachedAttr(containerEle, 'nav-bar', isActive ? 'active' : 'cached');
 
     var alignTitle = $attrs.alignTitle || $ionicConfig.navBar.alignTitle();
