@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','dtk.order','dtk.home'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','dtk.order','dtk.home','ngCordova'])
 
-.run(function($rootScope,$ionicPlatform,$ionicModal,$timeout,MessageService,UserService) {
+.run(function($rootScope,$ionicPlatform,$ionicModal,$timeout,$cordovaToast,MessageService,UserService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -76,7 +76,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
       //发送验证码
       var that = this;
       if (!Tools.isMobileNo($rootScope.login.loginname)) {
-        //$cordovaToast.showLongBottom('');
         console.log('手机号码输入不合法');
         return;
       }
@@ -90,12 +89,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
             that.showTimer();
           }else{
             var errorMessage = res.data.errorMessage?res.data.errorMessage:"发送验证码失败";
-            //$cordovaToast.showLongBottom(errorMessage);
+            $cordovaToast.showLongBottom(errorMessage);
           }
-          console.log('res = ' + res);
         },function (error) {
-          console.log('error = ' + error);
-          //$cordovaToast.showLongBottom('发送验证码失败');
+          $cordovaToast.showLongBottom('发送验证码失败');
         });
     },
     showTimer: function () {
@@ -134,18 +131,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
           }else{
             submitResult = false;
             var errorMessage = res.errorMessage?res.errorMessage:"注册失败";
-            console.log(errorMessage);
-            //$cordovaToast.showLongBottom(errorMessage);
+            $cordovaToast.showLongBottom(errorMessage);
           }
         },function (error){
           submitResult = false;
-          console.log('error = ' + error);
-          //$cordovaToast.showLongBottom('提交验证码失败');
+          $cordovaToast.showLongBottom('提交验证码失败');
         })
         .then(function () {
           if(submitResult){
-            console.log('获取token');
-
             //获取token
             var params = {
               phone: $rootScope.login.loginname
@@ -160,19 +153,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
                   $rootScope.closeRegistModal();
                 }else{
                   var errorMessage = res.errorMessage?res.errorMessage:"获取用户凭证失败";
-                  console.log(errorMessage);
-                  //$cordovaToast.showLongBottom(errorMessage);
+                  $cordovaToast.showLongBottom(errorMessage);
                 }
               },function (error){
-                console.log('error = ' + error);
-                //$cordovaToast.showLongBottom('获取用户凭证失败');
+                $cordovaToast.showLongBottom('获取用户凭证失败');
               });
           }else{
             console.log('不能获取token');
           }
         },function (error){
-          console.log('error = ' + error);
-          //$cordovaToast.showLongBottom('提交验证码失败');
+          $cordovaToast.showLongBottom('提交验证码失败');
         });
     },
     //登录系统
@@ -191,18 +181,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
           }else{
             submitResult = false;
             var errorMessage = res.errorMessage?res.errorMessage:"提交验证码失败";
-            console.log(errorMessage);
-            //$cordovaToast.showLongBottom(errorMessage);
+            $cordovaToast.showLongBottom(errorMessage);
           }
         },function (error){
           submitResult = false;
-          console.log('error = ' + error);
-          //$cordovaToast.showLongBottom('提交验证码失败');
+          $cordovaToast.showLongBottom('提交验证码失败');
         })
         .then(function () {
           if(submitResult){
-            console.log('获取token');
-
             //获取token
             var params = {
               phone: $rootScope.login.loginname
@@ -239,19 +225,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','d
                   $rootScope.closeLoginModal();
                 }else{
                   var errorMessage = res.errorMessage?res.errorMessage:"获取用户凭证失败";
-                  console.log(errorMessage);
-                  //$cordovaToast.showLongBottom(errorMessage);
+                  $cordovaToast.showLongBottom(errorMessage);
                 }
               },function (error){
-                console.log('error = ' + error);
-                //$cordovaToast.showLongBottom('获取用户凭证失败');
+                $cordovaToast.showLongBottom('获取用户凭证失败');
               });
           }else{
             console.log('不能获取token');
           }
         },function (error){
-          console.log('error = ' + error);
-          //$cordovaToast.showLongBottom('提交验证码失败');
+          $cordovaToast.showLongBottom('提交验证码失败');
         });
     }
   };
