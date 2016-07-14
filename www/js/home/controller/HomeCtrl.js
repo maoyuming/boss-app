@@ -15,11 +15,12 @@
           getCount(50,moment().format('YYYY-MM-DD'));
           getCount(30,'');
           getBalanceAmount();
+            $scope.home = {
+                hotelName:$rootScope.localStorageObj.hotelName
+            };
         }
 
-           $scope.home = {
-               hotelName:$rootScope.localStorageObj.hotelName
-           };
+
            function getCount(status,time){
                 var params = {
                     hotelId:  $rootScope.localStorageObj.hotelId,

@@ -25,12 +25,14 @@ angular.module('starter.controllers')
       };
 
       //保存我的手机
-      $scope.my = {
-        hotelName:$rootScope.localStorageObj.hotelName,
-        phone:$rootScope.localStorageObj.phone,
-        //保存
-        saveMyPhone : function(){
-          $rootScope.closeModifyMyPhoneModal();
-        }
+      if($rootScope.localStorageObj){
+          $scope.my = {
+              hotelName:$rootScope.localStorageObj.hotelName,
+              phone:$rootScope.localStorageObj.phone,
+              saveMyPhone : function(){
+                  $rootScope.closeModifyMyPhoneModal();
+              }
+          }
       }
+
   }]);

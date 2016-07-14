@@ -1,61 +1,36 @@
 <ion-view view-title="{{home.hotelName}}">
-
     <ion-nav-buttons side="right">
         <div class="buttons">
-            <button class="button no-animation button-icon icon ion-ios-chatbubble-outline" ng-click="goChatList()"></button>
+            <button class="button no-animation button-icon ion-android-more-horizontal" ng-click="goChatList()"></button>
         </div>
     </ion-nav-buttons>
+    <ion-content class="padding">
 
-  <ion-content class="padding">
-      <div class="title-item item"  >
-        <div class="row" style="text-align: center;">
-          <div class="col-50" style="border-right: 1px solid; border-color: #cecece;" ng-click="goToBeConfirmed()">
-              <p>今日订单</p>
-            <p>{{home.todayCount}}</p>
-          </div>
-          <div class="col-50" ng-click="goToBeConfirmed()">
-              <p>待确认订单</p>
-            <p>{{home.toBeConfirmedCount}}</p>
-          </div>
-        </div>
-      </div>
+        <div class="list">
+            <div class="item item-avatar">
+                <img src="/img/yens7.png">
+                <h2>账户余额(元) </h2>
+                <p>{{home.amount}}.00</p>
 
-      <div class="title-item item"  style="margin-top: 10px">
-        <div class="row" style="text-align: center;">
-          <div class="col-90" style="border-bottom: 1px solid; border-color: #cecece;">
-                  <b>账户余额(元) ￥{{home.amount}}</b>
-          </div>
+                <div class="button button-small button-assertive" ng-click="goSettlementApply()" >立即提现</div>
+                <div class="button button-small button-assertive"  ng-click="goSettlement()">账单明细</div>
+            </div>
+            <div class="item item-icon-left item-icon-right" ng-click="goToBeConfirmed()">
+                <i class="icon ion-clipboard"></i>
+                今日订单
+                <span class="badge badge-assertive">{{home.todayCount}}</span>
+            </div>
+            <div class="item item-icon-left item-icon-right" href="#" ng-click="goToBeConfirmed()">
+                <i class="icon ion-clipboard"></i>
+                待确认订单
+                <span class="badge badge-assertive">{{home.toBeConfirmedCount}}</span>
+            </div>
+            <div class="item item-body">
+                <p>销售经理电话：13311057016</p>
+                <p>客服电话：400-123445</p>
+            </div>
         </div>
-       <div class="row" style="text-align: center;margin-top: 6px;">
-          <div class="col-50" style="border-right: 1px solid; border-color: #cecece;" ng-click="goSettlement()">
-             <p>账单明细</p>
-          </div>
-          <div class="col-50" ng-click="goSettlementApply()">
-              <p>立即提现</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="title-item item"  style="margin-top: 10px">
-        <div class="row" style="text-align: left;">
-          <div class="col-90">
-            5月份账单已更新
-          </div>
-        </div>
-      </div>
 
-      <div class="title-item item"  style="margin-top: 10px;border: 0px solid;">
-        <div class="row" style="text-align: left;">
-          <div class="col-90">
-            BD电话：1331234567
-          </div>
-        </div>
-        <div class="row" style="text-align: left;margin-top: 10px;">
-          <div class="col-90">
-            客服热线：400-1234567
-          </div>
-        </div>
-      </div>
-
-  </ion-content>
+</ion-content>
 </ion-view>
