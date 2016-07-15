@@ -7,7 +7,7 @@ import {
     updateLocale,
     getLocale,
     listLocales
-} from './locales';
+    } from './locales';
 
 import {
     listMonths,
@@ -15,20 +15,22 @@ import {
     listWeekdays,
     listWeekdaysShort,
     listWeekdaysMin
-} from './lists';
+    } from './lists';
 
-export {
+export
+{
     getSetGlobalLocale,
-    defineLocale,
-    updateLocale,
-    getLocale,
-    listLocales,
-    listMonths,
-    listMonthsShort,
-    listWeekdays,
-    listWeekdaysShort,
-    listWeekdaysMin
-};
+        defineLocale,
+        updateLocale,
+        getLocale,
+        listLocales,
+        listMonths,
+        listMonthsShort,
+        listWeekdays,
+        listWeekdaysShort,
+        listWeekdaysMin
+}
+;
 
 import { deprecate } from '../utils/deprecate';
 import { hooks } from '../utils/hooks';

@@ -36,7 +36,7 @@
                 }
                 $scope.currentTab = tabName;
 
-                function clear(){
+                function clear() {
                     $scope.status = '';
                     $scope.beginTime = '';
                     $scope.endTime = '';
@@ -55,7 +55,7 @@
                     case 'future':
                         clear();
                         $scope.status = '50';
-                        $scope.beginTime = moment().add('days',1).format('YYYY-MM-DD');
+                        $scope.beginTime = moment().add('days', 1).format('YYYY-MM-DD');
                         break;
                     case 'history':
                         clear();
@@ -81,7 +81,7 @@
                 var params = {
                     pageNo: _this.page.pageNo,// 当前页(非必填 默认1)
                     pageSize: 10,// 每页分页数(非必填 默认10)
-                    hotelId:  $rootScope.localStorageObj.hotelId,
+                    hotelId: $rootScope.localStorageObj.hotelId,
                     status: $scope.status,
                     beginTime: $scope.beginTime,
                     endTime: $scope.endTime
@@ -98,9 +98,9 @@
                                 var _order = _.clone(order);
                                 _order.beginTime = moment(_order.beginTime).format('YYYY-MM-DD');
                                 _order.endTime = moment(_order.endTime).format('YYYY-MM-DD');
-                                _order.orderStatus =  orderStatusTranslate (_order.status);
-                                _order.paystatus =  payStatusTranslate (_order.payStatus);
-                                _order.orderType =  orderTypeTranslate (_order.flag);
+                                _order.orderStatus = orderStatusTranslate(_order.status);
+                                _order.paystatus = payStatusTranslate(_order.payStatus);
+                                _order.orderType = orderTypeTranslate(_order.flag);
                                 data.push(_order);
                             });
                             _data = data;
@@ -146,8 +146,8 @@
             }
         };
 
-        $scope.gotoOrderDetail = function gotoOrderDetail(orderId){
-            $state.go("tab.orderDetail",{orderId:orderId});
+        $scope.gotoOrderDetail = function gotoOrderDetail(orderId) {
+            $state.go("tab.orderDetail", {orderId: orderId});
         }
     };
 

@@ -60,9 +60,6 @@
             };
 
 
-
-
-
             OrderService.detail({orderId: orderId})
                 .success(function (result) {
                     console.log(result);
@@ -80,9 +77,9 @@
                             orderPrice: result.data.totalPrice,
                             hotelName: result.data.supplierName,
                             customerId: result.data.customerId,
-                            orderStatus: orderStatusTranslate (result.data.status),
-                            payStatus: payStatusTranslate (result.data.payStatus),
-                            orderType: orderTypeTranslate (result.data.flag)
+                            orderStatus: orderStatusTranslate(result.data.status),
+                            payStatus: payStatusTranslate(result.data.payStatus),
+                            orderType: orderTypeTranslate(result.data.flag)
                         };
                         var orderDetails = [];
 
@@ -94,7 +91,7 @@
                             };
                             _.each(detail.priceDetails, function (priceInfo) {
                                 _detail.price.push({
-                                   // actionTime: moment(priceInfo.actionTime).format('YYYY-MM-DD'),
+                                    // actionTime: moment(priceInfo.actionTime).format('YYYY-MM-DD'),
                                     price: priceInfo.price
                                 })
                             });

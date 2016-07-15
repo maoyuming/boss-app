@@ -1,18 +1,22 @@
-<ion-view view-title="{{home.hotelName}}">
+<ion-view view-title="{{home.hotelName}}" cache-view="false">
     <ion-nav-buttons side="right">
         <div class="buttons">
-            <button class="button no-animation button-icon ion-android-more-horizontal" ng-click="goChatList()"></button>
+            <button class="button no-animation button-icon ion-android-more-horizontal"
+                    ng-click="goChatList()"></button>
         </div>
     </ion-nav-buttons>
     <ion-content class="padding">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
         <div class="list">
             <div class="item item-avatar">
                 <img src="img/yens7.png">
+
                 <h2>账户余额(元) </h2>
+
                 <p>{{home.amount}}.00</p>
 
-                <div class="button button-small button-assertive" ng-click="goSettlementApply()" >立即提现</div>
-                <div class="button button-small button-assertive"  ng-click="goSettlement()">账单明细</div>
+                <div class="button button-small button-positive" ng-click="goSettlementApply()">立即提现</div>
+                <div class="button button-small button-positive" ng-click="goSettlement()">账单明细</div>
             </div>
             <div class="item item-icon-left item-icon-right" ng-click="goToBeConfirmed()">
                 <i class="icon ion-clipboard"></i>
@@ -26,10 +30,11 @@
             </div>
             <div class="item item-body">
                 <p>销售经理电话：13311057016</p>
+
                 <p>客服电话：400-123445</p>
             </div>
         </div>
 
 
-</ion-content>
+    </ion-content>
 </ion-view>

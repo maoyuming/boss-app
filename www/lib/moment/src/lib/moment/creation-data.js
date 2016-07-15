@@ -1,4 +1,5 @@
-export function creationData() {
+export
+function creationData() {
     return {
         input: this._i,
         format: this._f,

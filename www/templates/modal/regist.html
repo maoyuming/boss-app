@@ -1,7 +1,9 @@
 <ion-modal-view>
-    <ion-header-bar align-title="center" class="bar-energized-crm">
-        <!--<button class="button button-clear" ng-click="closeRegistModal()" style="color:black">返回</button>-->
-        <h1 class="title">登录系统</h1>
+    <ion-header-bar align-title="center" class="bar-positive">
+        <button class="button button-clear" ng-click="closeRegistModal()" style="color:black"><i
+                class="icon ion-ios-arrow-thin-left"></i>返回
+        </button>
+        <h1 class="title">用户注册</h1>
     </ion-header-bar>
     <ion-content class="crm-content">
         <div class="list">
@@ -17,17 +19,19 @@
                 <button class="button button-small" ng-if="login.showCodeBtn" ng-click="login.sendCode4Phone()">
                     获取验证码
                 </button>
-                <button class="button button-small" style="min-width: 80px" ng-if="!login.showCodeBtn">{{login.timer + 's'}}</button>
+                <button class="button button-small" style="min-width: 80px" ng-if="!login.showCodeBtn">{{login.timer +
+                    's'}}
+                </button>
             </div>
             <div class="item item-input-inset">
-              <label class="item-input-wrapper">
-                <input type="text" class="crm-input" placeholder="销售手机号" ng-model="login.salePhone">
-              </label>
+                <label class="item-input-wrapper">
+                    <input type="text" class="crm-input" placeholder="销售手机号" ng-model="login.salePhone">
+                </label>
             </div>
             <div class="item item-input-inset">
-              <label class="item-input-wrapper">
-                <input type="text" class="crm-input" placeholder="酒店名称" ng-model="login.hotelName">
-              </label>
+                <label class="item-input-wrapper">
+                    <input type="text" class="crm-input" placeholder="酒店名称" ng-model="login.hotelName">
+                </label>
             </div>
         </div>
         <div class="padding">
@@ -36,7 +40,7 @@
         </div>
         <div class="crm-empty10"></div>
         <div class="padding">
-            <button class="button button-block button-positive" ng-click="login.regist()" >提交</button>
+            <button class="button button-block button-positive" ng-click="login.regist()">提交</button>
         </div>
     </ion-content>
 </ion-modal-view>

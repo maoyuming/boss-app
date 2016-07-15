@@ -2,7 +2,8 @@ import { normalizeObjectUnits } from '../units/aliases';
 import { configFromArray } from './from-array';
 import map from '../utils/map';
 
-export function configFromObject(config) {
+export
+function configFromObject(config) {
     if (config._d) {
         return;
     }

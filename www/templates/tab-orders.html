@@ -1,74 +1,74 @@
-
 <ion-view view-title="订单管理">
-  <ion-content style="top: 0">
-      <ion-refresher
-              pulling-text="下拉刷新"
-              on-refresh="orders.refresh()">
-      </ion-refresher>
-    <div class="tabs" style="bottom: auto; top: 44px">
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toBeConfirmed']" ng-click="switchTo('toBeConfirmed')">
-       待确认
-      </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toDay']" ng-click="switchTo('toDay')">
-        今日单
-      </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='future']" ng-click="switchTo('future')">
-        预订单
-      </a>
-      <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='history']" ng-click="switchTo('history')">
-        历史订单
-      </a>
-    </div>
-    <ul class="list has-tabs-top">
-      <li class="item" ng-repeat="order in orders.data" ng-click="gotoOrderDetail(order.id)">
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-75">
-            <h3>{{order.orderType}}</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-                {{order.orderStatus}}
-            </p>
-          </div>
+    <ion-content style="top: 0">
+        <ion-refresher
+                pulling-text="下拉刷新"
+                on-refresh="orders.refresh()">
+        </ion-refresher>
+        <div class="tabs" style="bottom: auto; top: 44px">
+            <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toBeConfirmed']"
+               ng-click="switchTo('toBeConfirmed')">
+                待确认
+            </a>
+            <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='toDay']" ng-click="switchTo('toDay')">
+                今日单
+            </a>
+            <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='future']" ng-click="switchTo('future')">
+                预订单
+            </a>
+            <a class="tab-item" ng-class="{true:'order-tab-color'}[currentTab=='history']"
+               ng-click="switchTo('history')">
+                历史订单
+            </a>
         </div>
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-50">
-            <h3>{{order.contact}}</h3>
-          </div>
-          <div class="col-50" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-                {{order.contactPhone}}
-            </p>
-          </div>
-        </div>
-        <div class="row row-no-padding" style="margin-bottom: 5px">
-          <div class="col-75">
-            <h3>{{order.beginTime}} 至 {{order.endTime}}</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-              预留
-            </p>
-          </div>
-        </div>
-        <div class="row row-no-padding" style="margin-bottom: -10px">
-          <div class="col-75">
-            <h3>{{order.paystatus}}</h3>
-          </div>
-          <div class="col-25" style="padding-top: 0px;">
-            <p style="font-size: 15px;text-align: right;">
-                ￥{{order.totalPrice}}
-            </p>
-          </div>
-        </div>
-      </li>
-    </ul>
+        <ul class="list has-tabs-top">
+            <li class="item" ng-repeat="order in orders.data" ng-click="gotoOrderDetail(order.id)">
+                <div class="row row-no-padding" style="margin-bottom: 5px">
+                    <div class="col-75">
+                        <h3>{{order.orderType}}</h3>
+                    </div>
+                    <div class="col-25" style="padding-top: 0px;">
+                        <p style="font-size: 15px;text-align: right;">
+                            {{order.orderStatus}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-no-padding" style="margin-bottom: 5px">
+                    <div class="col-50">
+                        <h3>{{order.contact}}</h3>
+                    </div>
+                    <div class="col-50" style="padding-top: 0px;">
+                        <p style="font-size: 15px;text-align: right;">
+                            {{order.contactPhone}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-no-padding" style="margin-bottom: 5px">
+                    <div class="col-75">
+                        <h3>{{order.beginTime}} 至 {{order.endTime}}</h3>
+                    </div>
+                    <div class="col-25" style="padding-top: 0px;">
+                        <p style="font-size: 15px;text-align: right;">
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-no-padding" style="margin-bottom: -10px">
+                    <div class="col-75">
+                        <h3>{{order.paystatus}}</h3>
+                    </div>
+                    <div class="col-25" style="padding-top: 0px;">
+                        <p style="font-size: 15px;text-align: right;">
+                            ￥{{order.totalPrice}}
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
 
-      <ion-infinite-scroll
-              ng-if="orders.moreDataCanBeLoaded"
-              on-infinite="orders.loadMore()"
-              distance="5%"
-              spinner="dots">
-      </ion-infinite-scroll>
-  </ion-content>
+        <ion-infinite-scroll
+                ng-if="orders.moreDataCanBeLoaded"
+                on-infinite="orders.loadMore()"
+                distance="5%"
+                spinner="dots">
+        </ion-infinite-scroll>
+    </ion-content>
 </ion-view>

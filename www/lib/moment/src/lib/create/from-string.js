@@ -41,7 +41,8 @@ var isoTimes = [
 var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
 
 // date from iso format
-export function configFromISO(config) {
+export
+function configFromISO(config) {
     var i, l,
         string = config._i,
         match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
@@ -94,7 +95,8 @@ export function configFromISO(config) {
 }
 
 // date from iso format or fallback
-export function configFromString(config) {
+export
+function configFromString(config) {
     var matched = aspNetJsonRegex.exec(config._i);
 
     if (matched !== null) {
@@ -110,10 +112,10 @@ export function configFromString(config) {
 }
 
 hooks.createFromInputFallback = deprecate(
-    'moment construction falls back to js Date. This is ' +
-    'discouraged and will be removed in upcoming major ' +
-    'release. Please refer to ' +
-    'https://github.com/moment/moment/issues/1407 for more info.',
+        'moment construction falls back to js Date. This is ' +
+        'discouraged and will be removed in upcoming major ' +
+        'release. Please refer to ' +
+        'https://github.com/moment/moment/issues/1407 for more info.',
     function (config) {
         config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
     }

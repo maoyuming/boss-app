@@ -1,21 +1,21 @@
 <ion-view view-title="收支明细">
-  <ion-content>
-    <div class="list">
-      <div class="item" href="#">
-        收支类型：{{feetypedesc}}
-      </div>
+    <ion-content>
+        <div class="list">
+            <div class="item" href="#">
+                收支类型：{{feetypedesc}}
+            </div>
 
-      <div ng-repeat="item in items">
-        <div class="item">
-          {{item.scDateDesc}}
+            <div ng-repeat="item in items">
+                <div class="item">
+                    {{item.scDateDesc}}
         <span class="item-note">
           {{item.scPriceDesc}}
         </span>
+                </div>
+            </div>
+            <div class='item text-center' ng-if="items.length==0">
+                <p>没有明细信息</p>
+            </div>
         </div>
-      </div>
-      <div class='item text-center' ng-if="items.length==0">
-        <p>没有明细信息</p>
-      </div>
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

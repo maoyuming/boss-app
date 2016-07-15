@@ -5,7 +5,8 @@ import { isValid } from './valid';
 import extend from '../utils/extend';
 
 // date from string and array of format strings
-export function configFromStringAndArray(config) {
+export
+function configFromStringAndArray(config) {
     var tempConfig,
         bestMoment,
 

@@ -4,12 +4,13 @@ import isUndefined from './is-undefined';
 
 function warn(msg) {
     if (hooks.suppressDeprecationWarnings === false &&
-            (typeof console !==  'undefined') && console.warn) {
+        (typeof console !== 'undefined') && console.warn) {
         console.warn('Deprecation warning: ' + msg);
     }
 }
 
-export function deprecate(msg, fn) {
+export
+function deprecate(msg, fn) {
     var firstTime = true;
 
     return extend(function () {
@@ -26,7 +27,8 @@ export function deprecate(msg, fn) {
 
 var deprecations = {};
 
-export function deprecateSimple(name, msg) {
+export
+function deprecateSimple(name, msg) {
     if (hooks.deprecationHandler != null) {
         hooks.deprecationHandler(name, msg);
     }

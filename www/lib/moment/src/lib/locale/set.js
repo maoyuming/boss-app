@@ -3,7 +3,8 @@ import extend from '../utils/extend';
 import isObject from '../utils/is-object';
 import hasOwnProp from '../utils/has-own-prop';
 
-export function set (config) {
+export
+function set(config) {
     var prop, i;
     for (i in config) {
         prop = config[i];
@@ -19,7 +20,8 @@ export function set (config) {
     this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + (/\d{1,2}/).source);
 }
 
-export function mergeConfigs(parentConfig, childConfig) {
+export
+function mergeConfigs(parentConfig, childConfig) {
     var res = extend({}, parentConfig), prop;
     for (prop in childConfig) {
         if (hasOwnProp(childConfig, prop)) {

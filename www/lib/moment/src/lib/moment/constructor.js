@@ -7,7 +7,8 @@ import getParsingFlags from '../create/parsing-flags';
 // so we can properly clone ourselves.
 var momentProperties = hooks.momentProperties = [];
 
-export function copyConfig(to, from) {
+export
+function copyConfig(to, from) {
     var i, prop, val;
 
     if (!isUndefined(from._isAMomentObject)) {
@@ -57,7 +58,8 @@ export function copyConfig(to, from) {
 var updateInProgress = false;
 
 // Moment prototype object
-export function Moment(config) {
+export
+function Moment(config) {
     copyConfig(this, config);
     this._d = new Date(config._d != null ? config._d.getTime() : NaN);
     // Prevent infinite loop in case updateOffset creates new moment
@@ -69,6 +71,7 @@ export function Moment(config) {
     }
 }
 
-export function isMoment (obj) {
+export
+function isMoment(obj) {
     return obj instanceof Moment || (obj != null && obj._isAMomentObject != null);
 }

@@ -16,4 +16,10 @@ if (Array.prototype.some) {
     };
 }
 
-export { some as default };
+export
+{
+    some
+    as
+default
+}
+;

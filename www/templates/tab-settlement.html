@@ -1,25 +1,25 @@
 <ion-view view-title="财务结算">
-  <ion-content>
-    <div class="list">
-      <div class="item" href="#">
-        余额：{{balance}}.00
+    <ion-content>
+        <div class="list">
+            <div class="item" href="#">
+                余额：{{balance}}.00
         <span class="item-note" ng-click="gotoPage('tab.settlementApply')">
           立即提现
         </span>
-      </div>
-      <div class="item item-divider">
-        <div style="margin-bottom: 6px;">收入详情(单位:元)</div>
-        <div>余额 = 住宿+餐饮+团体+其他-返点-提现</div>
-      </div>
+            </div>
+            <div class="item item-divider">
+                <div style="margin-bottom: 6px;">收入详情(单位:元)</div>
+                <div>余额 = 住宿+餐饮+团体+其他-返点-提现</div>
+            </div>
 
-      <div ng-repeat="feetype in feetypes" ui-sref="tab.settlementDetail({feetype: feetype.key})">
-        <div class="item">
-          {{feetype.value}}
+            <div ng-repeat="feetype in feetypes" ui-sref="tab.settlementDetail({feetype: feetype.key})">
+                <div class="item">
+                    {{feetype.value}}
         <span class="item-note">
           查看<i class="ion-chevron-right"></i>
         </span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

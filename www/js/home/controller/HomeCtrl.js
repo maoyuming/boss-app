@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -6,33 +5,34 @@
         .module('dtk.home')
         .controller('HomeCtrl', HomeCtrl);
 
-    HomeCtrl.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'OrderService',"SettlementService"];
+    HomeCtrl.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'OrderService', "SettlementService"];
 
     /* @ngInject */
-    function HomeCtrl($rootScope, $scope, $state, $stateParams, $timeout, OrderService,SettlementService) {
+    function HomeCtrl($rootScope, $scope, $state, $stateParams, $timeout, OrderService, SettlementService) {
 
-        if($rootScope.localStorageObj){
-          getCount(50,moment().format('YYYY-MM-DD'));
-          getCount(30,'');
-          getBalanceAmount();
-            $scope.home = {
-                hotelName:$rootScope.localStorageObj.hotelName
-            };
-        }
+            if ($rootScope.localStorageObj) {
+                getCount(50, moment().format('YYYY-MM-DD'));
+                getCount(30, '');
+                getBalanceAmount();
+                $scope.home = {
+                    hotelName: $rootScope.localStorageObj.hotelName
+                };
+            }
 
+            function getCount(status, time) {
 
-           function getCount(status,time){
+                var a = $rootScope.localStorageObj.hotelId;
                 var params = {
-                    hotelId:  $rootScope.localStorageObj.hotelId,
+                    hotelId: $rootScope.localStorageObj.hotelId,
                     status: status,
                     beginTime: time
                 };
 
                 OrderService.getOrderNum(params)
                     .success(function (result) {
-                        if(status==50){
+                        if (status == 50) {
                             $scope.home.todayCount = result.data
-                        }else {
+                        } else {
                             $scope.home.toBeConfirmedCount = result.data
                         }
                     })
@@ -40,20 +40,20 @@
                         console.log(result);
                     }
                 );
-           }
+            }
 
 
-            function getBalanceAmount(){
+            function getBalanceAmount() {
                 var params = {
                     hotelId: $rootScope.localStorageObj.hotelId,
-                    bossId:$rootScope.localStorageObj.bossId
+                    bossId: $rootScope.localStorageObj.bossId
                 };
 
                 SettlementService.bossScBalance(params)
                     .success(function (res) {
-                        if(res && res.result && res.result == "T"){
+                        if (res && res.result && res.result == "T") {
                             $scope.home.amount = res.data;
-                        }else{
+                        } else {
                             console.log('balance == null');
                         }
                     })
@@ -63,28 +63,29 @@
             }
 
 
-            $scope.goToBeConfirmed = function goToBeConfirmed(){
+            $scope.goToBeConfirmed = function goToBeConfirmed() {
                 $state.go("tab.orders");
             }
 
-            $scope.goTodayOrderPage = function goTodayOrderPage(){
+            $scope.goTodayOrderPage = function goTodayOrderPage() {
                 $state.go("tab.orders");
             }
 
-            $scope.goSettlement = function goSettlement(){
+            $scope.goSettlement = function goSettlement() {
                 $state.go("tab.settlement");
             }
 
-            $scope.goSettlementApply = function goSettlementApply(){
+            $scope.goSettlementApply = function goSettlementApply() {
                 $state.go("tab.settlementApply");
             }
 
-            $scope.goChatList = function goChatList(){
+            $scope.goChatList = function goChatList() {
                 $state.go("tab.chat");
             }
+            $scope.doRefresh = function () {
+                $state.reload();
+            };
 
-
-    };
-
+        }
 })();
 

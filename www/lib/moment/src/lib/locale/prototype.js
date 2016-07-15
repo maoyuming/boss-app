@@ -10,21 +10,21 @@ import { preParsePostFormat } from './pre-post-format';
 import { defaultRelativeTime, relativeTime, pastFuture } from './relative';
 import { set } from './set';
 
-proto._calendar       = defaultCalendar;
-proto.calendar        = calendar;
+proto._calendar = defaultCalendar;
+proto.calendar = calendar;
 proto._longDateFormat = defaultLongDateFormat;
-proto.longDateFormat  = longDateFormat;
-proto._invalidDate    = defaultInvalidDate;
-proto.invalidDate     = invalidDate;
-proto._ordinal        = defaultOrdinal;
-proto.ordinal         = ordinal;
-proto._ordinalParse   = defaultOrdinalParse;
-proto.preparse        = preParsePostFormat;
-proto.postformat      = preParsePostFormat;
-proto._relativeTime   = defaultRelativeTime;
-proto.relativeTime    = relativeTime;
-proto.pastFuture      = pastFuture;
-proto.set             = set;
+proto.longDateFormat = longDateFormat;
+proto._invalidDate = defaultInvalidDate;
+proto.invalidDate = invalidDate;
+proto._ordinal = defaultOrdinal;
+proto.ordinal = ordinal;
+proto._ordinalParse = defaultOrdinalParse;
+proto.preparse = preParsePostFormat;
+proto.postformat = preParsePostFormat;
+proto._relativeTime = defaultRelativeTime;
+proto.relativeTime = relativeTime;
+proto.pastFuture = pastFuture;
+proto.set = set;
 
 // Month
 import {
@@ -33,17 +33,17 @@ import {
     defaultLocaleMonthsShort, localeMonthsShort,
     defaultMonthsRegex,       monthsRegex,
     defaultMonthsShortRegex,  monthsShortRegex
-} from '../units/month';
+    } from '../units/month';
 
-proto.months            =        localeMonths;
-proto._months           = defaultLocaleMonths;
-proto.monthsShort       =        localeMonthsShort;
-proto._monthsShort      = defaultLocaleMonthsShort;
-proto.monthsParse       =        localeMonthsParse;
-proto._monthsRegex      = defaultMonthsRegex;
-proto.monthsRegex       = monthsRegex;
+proto.months = localeMonths;
+proto._months = defaultLocaleMonths;
+proto.monthsShort = localeMonthsShort;
+proto._monthsShort = defaultLocaleMonthsShort;
+proto.monthsParse = localeMonthsParse;
+proto._monthsRegex = defaultMonthsRegex;
+proto.monthsRegex = monthsRegex;
 proto._monthsShortRegex = defaultMonthsShortRegex;
-proto.monthsShortRegex  = monthsShortRegex;
+proto.monthsShortRegex = monthsShortRegex;
 
 // Week
 import { localeWeek, defaultLocaleWeek, localeFirstDayOfYear, localeFirstDayOfWeek } from '../units/week';
@@ -62,22 +62,22 @@ import {
     defaultWeekdaysRegex, weekdaysRegex,
     defaultWeekdaysShortRegex, weekdaysShortRegex,
     defaultWeekdaysMinRegex, weekdaysMinRegex
-} from '../units/day-of-week';
+    } from '../units/day-of-week';
 
-proto.weekdays       =        localeWeekdays;
-proto._weekdays      = defaultLocaleWeekdays;
-proto.weekdaysMin    =        localeWeekdaysMin;
-proto._weekdaysMin   = defaultLocaleWeekdaysMin;
-proto.weekdaysShort  =        localeWeekdaysShort;
+proto.weekdays = localeWeekdays;
+proto._weekdays = defaultLocaleWeekdays;
+proto.weekdaysMin = localeWeekdaysMin;
+proto._weekdaysMin = defaultLocaleWeekdaysMin;
+proto.weekdaysShort = localeWeekdaysShort;
 proto._weekdaysShort = defaultLocaleWeekdaysShort;
-proto.weekdaysParse  =        localeWeekdaysParse;
+proto.weekdaysParse = localeWeekdaysParse;
 
-proto._weekdaysRegex      = defaultWeekdaysRegex;
-proto.weekdaysRegex       =        weekdaysRegex;
+proto._weekdaysRegex = defaultWeekdaysRegex;
+proto.weekdaysRegex = weekdaysRegex;
 proto._weekdaysShortRegex = defaultWeekdaysShortRegex;
-proto.weekdaysShortRegex  =        weekdaysShortRegex;
-proto._weekdaysMinRegex   = defaultWeekdaysMinRegex;
-proto.weekdaysMinRegex    =        weekdaysMinRegex;
+proto.weekdaysShortRegex = weekdaysShortRegex;
+proto._weekdaysMinRegex = defaultWeekdaysMinRegex;
+proto.weekdaysMinRegex = weekdaysMinRegex;
 
 // Hours
 import { localeIsPM, defaultLocaleMeridiemParse, localeMeridiem } from '../units/hour';

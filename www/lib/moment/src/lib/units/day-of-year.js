@@ -16,7 +16,7 @@ addUnitAlias('dayOfYear', 'DDD');
 
 // PARSING
 
-addRegexToken('DDD',  match1to3);
+addRegexToken('DDD', match1to3);
 addRegexToken('DDDD', match3);
 addParseToken(['DDD', 'DDDD'], function (input, array, config) {
     config._dayOfYear = toInt(input);
@@ -26,7 +26,8 @@ addParseToken(['DDD', 'DDDD'], function (input, array, config) {
 
 // MOMENTS
 
-export function getSetDayOfYear (input) {
+export
+function getSetDayOfYear(input) {
     var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
     return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
 }

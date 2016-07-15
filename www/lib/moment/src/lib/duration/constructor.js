@@ -1,7 +1,8 @@
 import { normalizeObjectUnits } from '../units/aliases';
 import { getLocale } from '../locale/locales';
 
-export function Duration (duration) {
+export
+function Duration(duration) {
     var normalizedInput = normalizeObjectUnits(duration),
         years = normalizedInput.year || 0,
         quarters = normalizedInput.quarter || 0,
@@ -36,6 +37,7 @@ export function Duration (duration) {
     this._bubble();
 }
 
-export function isDuration (obj) {
+export
+function isDuration(obj) {
     return obj instanceof Duration;
 }

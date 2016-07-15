@@ -1,19 +1,20 @@
 <ion-view view-title="提现">
-  <ion-content>
-    <div class="list">
-      <div class="item" href="#">
-        银行账号：6225770139482987
-      </div>
-      <label class="item item-input">
-        <span class="input-label">提现金额</span>
-        <input type="text" ng-model="apply.sum" maxlength="10" placeholder="请输入提现金额">
-      </label>
-    </div>
-    <button class="button button-full button-positive" ng-click="applywithdraw()">
-      申请提现
-    </button>
-    <button class="button button-full button-positive" ng-click="gotoPage('tab.settlementApplyList')">
-      查看提现进度
-    </button>
-  </ion-content>
+    <button class="button button-clear" style="color:black"><i class="icon ion-arrow-left-c"></i></button>
+    <ion-content>
+        <div class="list">
+            <div class="item" href="#">
+                银行账号：6225770139482987
+            </div>
+            <label class="item item-input">
+                <span class="input-label">提现金额</span>
+                <input type="text" ng-model="apply.sum" maxlength="10" placeholder="请输入提现金额">
+            </label>
+        </div>
+        <button class="button button-full button-positive" ng-click="applywithdraw()">
+            申请提现
+        </button>
+        <button class="button button-full button-positive" ng-click="gotoPage('tab.settlementApplyList')">
+            查看提现进度
+        </button>
+    </ion-content>
 </ion-view>

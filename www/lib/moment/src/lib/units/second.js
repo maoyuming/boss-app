@@ -15,10 +15,11 @@ addUnitAlias('second', 's');
 
 // PARSING
 
-addRegexToken('s',  match1to2);
+addRegexToken('s', match1to2);
 addRegexToken('ss', match1to2, match2);
 addParseToken(['s', 'ss'], SECOND);
 
 // MOMENTS
 
-export var getSetSecond = makeGetSet('Seconds', false);
+export
+var getSetSecond = makeGetSet('Seconds', false);
