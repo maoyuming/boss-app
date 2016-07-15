@@ -54,19 +54,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             //校验是否登录该系统
             $rootScope.localStorageObj = LoginInfo.getLoginInfo();
             if (!$rootScope.localStorageObj) {
-                $rootScope.openLoginModal(function () {
-                });
+                $rootScope.openLoginModal();
             }
         });
-        $rootScope.openLoginModal = function (cb) {
+        $rootScope.openLoginModal = function () {
             $rootScope.loginModal.show();
-            $rootScope.loginCallback = cb;
         };
         $rootScope.closeLoginModal = function () {
             $rootScope.loginModal.hide();
-            if (typeof $rootScope.loginCallback == 'function') {
-                $rootScope.loginCallback.call(null);
-            }
+
         };
         //登录系统
         $rootScope.login = {
@@ -214,18 +210,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                                                 $rootScope.localStorageObj.hotelId = hotelId;
                                                 $rootScope.localStorageObj.hotelName = hotelName;
                                                 LoginInfo.setLoginInfo($rootScope.localStorageObj);
+
+                                                UserService.getLoginUser()
+                                                    .success(function (res) {
+                                                        $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+                                                        $rootScope.localStorageObj.bossId = res.data.bossId;
+                                                        $rootScope.localStorageObj.phone = res.data.phone;
+                                                        LoginInfo.setLoginInfo($rootScope.localStorageObj);
+                                                        $state.go("tab.home");
+                                                        $rootScope.$broadcast('home_refresh');
+                                                        $rootScope.closeLoginModal();
+                                                    });
                                             })
                                             .error(function (error) {
                                                 console.log('error = ' + error);
                                             });
-                                        UserService.getLoginUser()
-                                            .success(function (res) {
-                                                $rootScope.localStorageObj = LoginInfo.getLoginInfo();
-                                                $rootScope.localStorageObj.bossId = res.data.bossId;
-                                                $rootScope.localStorageObj.phone = res.data.phone;
-                                                LoginInfo.setLoginInfo($rootScope.localStorageObj);
-                                            });
-                                        $rootScope.closeLoginModal();
+
+
                                     } else {
                                         var errorMessage = res.errorMessage ? res.errorMessage : "获取用户凭证失败";
                                         $cordovaToast.showLongBottom(errorMessage);

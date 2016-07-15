@@ -9,19 +9,24 @@
 
     /* @ngInject */
     function HomeCtrl($rootScope, $scope, $state, $stateParams, $timeout, OrderService, SettlementService) {
-
-            if ($rootScope.localStorageObj) {
-                getCount(50, moment().format('YYYY-MM-DD'));
-                getCount(30, '');
-                getBalanceAmount();
-                $scope.home = {
-                    hotelName: $rootScope.localStorageObj.hotelName
-                };
+            init();
+            function init() {
+                if ($rootScope.localStorageObj) {
+                    getCount(50, moment().format('YYYY-MM-DD'));
+                    getCount(30, '');
+                    getBalanceAmount();
+                    $scope.home = {
+                        hotelName: $rootScope.localStorageObj.hotelName
+                    };
+                }
             }
 
-            function getCount(status, time) {
+            $scope.$on('home_refresh', function () {
+                init();
+            })
 
-                var a = $rootScope.localStorageObj.hotelId;
+
+            function getCount(status, time) {
                 var params = {
                     hotelId: $rootScope.localStorageObj.hotelId,
                     status: status,
