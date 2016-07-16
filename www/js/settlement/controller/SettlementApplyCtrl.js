@@ -25,4 +25,8 @@ angular.module('starter.controllers')
                     $state.go(to);
                 }, 150);
             };
+
+            $scope.goSettlement = function goSettlement() {
+                $state.go("tab.settlement");
+            }
         }]);
