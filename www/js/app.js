@@ -316,7 +316,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
             })
             .state('tab.settlementApply', {
-                url: '/settlement/apply',
+                url: '/settlement/apply?flag',
                 views: {
                     'tab-settlement': {
                         templateUrl: 'templates/settlement/settlement-apply.html',
@@ -353,10 +353,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
             })
 
-            .state('tab.chat', {
+            .state('tab.chats', {
                 url: '/chats',
                 views: {
-                    'tab-my': {
+                    'tab-chats': {
                         templateUrl: 'templates/tab-chats.html',
                         controller: 'MessageCtrl'
                     }

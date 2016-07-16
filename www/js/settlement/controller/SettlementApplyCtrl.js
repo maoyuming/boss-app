@@ -1,7 +1,8 @@
 angular.module('starter.controllers')
-    .controller('SettlementApplyCtrl', ['$rootScope', '$scope', '$state', '$location' , '$timeout', 'SettlementApplyService',
-        function ($rootScope, $scope, $state, $location, $timeout, SettlementApplyService) {
+    .controller('SettlementApplyCtrl', ['$rootScope','$stateParams', '$scope', '$state', '$location' , '$timeout', 'SettlementApplyService',
+        function ($rootScope, $stateParams,$scope, $state, $location, $timeout, SettlementApplyService) {
             $scope.apply = {sum: null};
+            $scope.flag = {value: $stateParams.flag};
             //申请提现
             $scope.applywithdraw = function () {
 

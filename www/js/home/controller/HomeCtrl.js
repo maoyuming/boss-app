@@ -81,11 +81,11 @@
             }
 
             $scope.goSettlementApply = function goSettlementApply() {
-                $state.go("tab.settlementApply");
+                $state.go("tab.settlementApply",{flag:'from_index_page'});
             }
 
             $scope.goChatList = function goChatList() {
-                $state.go("tab.chat");
+                $state.go("tab.chats");
             }
     }
 })();
