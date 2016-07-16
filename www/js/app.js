@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'dtk.order', 'dtk.home', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'dtk.order', 'dtk.home', 'ngCordova','dtk.message'])
 
     .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast, MessageService, UserService) {
         $ionicPlatform.ready(function () {
@@ -358,7 +358,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 views: {
                     'tab-my': {
                         templateUrl: 'templates/tab-chats.html',
-                        controller: 'MyCtrl'
+                        controller: 'MessageCtrl'
                     }
                 }
             });
@@ -420,3 +420,4 @@ angular.module('starter.controllers', []);
 angular.module('starter.services', []);
 angular.module('dtk.order', []);
 angular.module('dtk.home', []);
+angular.module('dtk.message', []);

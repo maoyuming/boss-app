@@ -87,6 +87,6 @@
             $scope.goChatList = function goChatList() {
                 $state.go("tab.chat");
             }
-        }
+    }
 })();
 

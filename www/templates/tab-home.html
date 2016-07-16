@@ -5,10 +5,10 @@
                     ng-click="goChatList()"></button>
         </div>
     </ion-nav-buttons>
-    <ion-content class="padding">
+    <ion-content>
         <div class="card">
             <div class="item item-text-wrap">
-                <h3 class="title" style="color:#666666;">账户余额(元):</h3>
+                <h2 class="title" style="color:#666666;">账户余额(元):</h2>
                 <h1 class="title" style="color:#666666;">￥{{home.amount}}.00</h1>
                 <div class="row">
                     <div class="col" style="color:#666666;" ng-click="goSettlement()">
@@ -17,7 +17,7 @@
                         </button>
                     </div>
                     <div class="col" style="color:#666666;" ng-click="goSettlementApply()">
-                        <button class="button icon-right ion-chevron-right button-assertive">
+                        <button class="button button-outline icon-right ion-chevron-right button-assertive">
                             立即提现
                         </button>
                     </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="list">
+        <div class="card">
             <div class="item item-button-right" ng-click="goToBeConfirmed()">
                 <h3 class="title" style="color:#666666;">今日订单</h3>
                 <button class="button button-clear button-assertive">
@@ -43,12 +43,12 @@
         <div class="list card">
             <a href="#" class="item item-icon-left">
                 <i class="icon ion-iphone"></i>
-                销售电话:13311057016
+                <h3 class="title" style="color:#666666;">销售电话:13311057016</h3>
             </a>
 
             <a href="#" class="item item-icon-left">
                 <i class="icon ion-ios-telephone-outline"></i>
-                客服电话:400-123445
+                <h3 class="title" style="color:#666666;">客服电话:400-123445</h3>
             </a>
         </div>
 
