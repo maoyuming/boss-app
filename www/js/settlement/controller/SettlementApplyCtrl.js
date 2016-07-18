@@ -2,7 +2,6 @@ angular.module('starter.controllers')
     .controller('SettlementApplyCtrl', ['$rootScope','$stateParams', '$scope', '$state', '$location' , '$timeout', 'SettlementApplyService',
         function ($rootScope, $stateParams,$scope, $state, $location, $timeout, SettlementApplyService) {
             $scope.apply = {sum: null};
-            $scope.flag = {value: $stateParams.flag};
             //申请提现
             $scope.applywithdraw = function () {
 
@@ -14,6 +13,7 @@ angular.module('starter.controllers')
                 };
                 SettlementApplyService.applywithdraw(params)
                     .success(function (res) {
+                        $rootScope.$broadcast('home_refresh');
                         alert(res.data);
                     })
                     .error(function (error) {

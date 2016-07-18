@@ -316,7 +316,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
             })
             .state('tab.settlementApply', {
-                url: '/settlement/apply?flag',
+                url: '/settlement/apply',
                 views: {
                     'tab-settlement': {
                         templateUrl: 'templates/settlement/settlement-apply.html',
