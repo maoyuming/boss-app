@@ -11,7 +11,7 @@ angular.module('starter.controllers')
             }
 
             //修改
-            $ionicModal.fromTemplateUrl('templates/modal/modify-my-phone-modal.html', {
+/*            $ionicModal.fromTemplateUrl('templates/modal/modify-my-phone-modal.html', {
                 scope: $rootScope,
                 animation: 'slide-in-up',
                 hardwareBackButtonClose: false,
@@ -24,7 +24,7 @@ angular.module('starter.controllers')
             };
             $rootScope.closeModifyMyPhoneModal = function () {
                 $rootScope.modifyMyPhoneModal.hide();
-            };
+            };*/
 
 
             init();

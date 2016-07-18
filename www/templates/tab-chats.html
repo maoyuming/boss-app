@@ -6,11 +6,9 @@
         </ion-refresher>
         <ion-list ion-list ng-repeat="chat in chats.data">
             <ion-item class="item item-button-right">
-                <h3 class="title" style="color:#666666;">{{chat.title}}</h3>
-                <h3 class="title" style="color:#666666;">{{chat.content}}</h3>
-                <button class="button button-clear button-assertive">
-                   <i class="ion-chevron-right" ></i>
-                </button>
+                <h3>{{chat.title}}</h3>
+                <h3>{{chat.content}}</h3>
+                <button class="button button-clear icon ion-chevron-right button-assertive"></button>
             </ion-item>
         </ion-list>
         <ion-infinite-scroll
