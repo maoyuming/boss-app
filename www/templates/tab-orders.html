@@ -5,16 +5,12 @@
                 on-refresh="orders.refresh()">
         </ion-refresher>
 
-
-        <div class="tabs-striped tabs-top">
-            <ion-tabs class="tabs-top">
-                <ion-tab title="待确认单" on-select="switchTo('toBeConfirmed')"></ion-tab>
-                <ion-tab title="今日单" on-select="switchTo('toDay')"></ion-tab>
-                <ion-tab title="预订单" on-select="switchTo('future')"></ion-tab>
-                <ion-tab title="历史单" on-select="switchTo('history')"></ion-tab>
-            </ion-tabs>
-        </div>
-
+        <ion-tabs class="tabs-top">
+            <ion-tab title="待确认单" on-select="switchTo('toBeConfirmed')"></ion-tab>
+            <ion-tab title="今日单" on-select="switchTo('toDay')"></ion-tab>
+            <ion-tab title="预订单" on-select="switchTo('future')"></ion-tab>
+            <ion-tab title="历史单" on-select="switchTo('history')"></ion-tab>
+        </ion-tabs>
 
         <ul class="list has-tabs-top">
             <li class="item" ng-repeat="order in orders.data" ng-click="gotoOrderDetail(order.id)">

@@ -59497,7 +59497,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
 
                 self.createHeaderBar = function (isActive) {
-                    var containerEle = jqLite('<div class="bar bar-header">');
+                    var containerEle = jqLite('<div class="bar bar-header bar-assertive">');
                     ionic.DomUtil.cachedAttr(containerEle, 'nav-bar', isActive ? 'active' : 'cached');
 
                     var alignTitle = $attrs.alignTitle || $ionicConfig.navBar.alignTitle();
