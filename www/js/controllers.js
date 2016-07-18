@@ -32,7 +32,6 @@
                         if (res && res.result) {
                             var b = _this.page.pageNo;
                             var _data = res.data;
-                            console.log(_data.length+"dddddddd");
                             if (!_data || _data.length <= 0) {
                                 if (_this.data.length <= 0) {
                                     _this.page.total = 0;

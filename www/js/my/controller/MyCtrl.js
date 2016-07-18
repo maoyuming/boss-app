@@ -1,10 +1,12 @@
 angular.module('starter.controllers')
-    .controller('MyCtrl', ['$rootScope', '$scope', '$state', '$location' , '$ionicModal',
-        function ($rootScope, $scope, $state, $location, $ionicModal) {
+    .controller('MyCtrl', ['$rootScope', '$ionicHistory','$scope', '$state', '$location' , '$ionicModal',
+        function ($rootScope,$ionicHistory, $scope, $state, $location, $ionicModal) {
 
             //退出登录
             $scope.logout = function () {
                 LoginInfo.rm();//删除用户缓存
+                $ionicHistory.clearCache();
+                $ionicHistory.clearHistory();
                 $rootScope.openLoginModal();
             }
 
@@ -24,15 +26,23 @@ angular.module('starter.controllers')
                 $rootScope.modifyMyPhoneModal.hide();
             };
 
-            //保存我的手机
-            if ($rootScope.localStorageObj) {
-                $scope.my = {
-                    hotelName: $rootScope.localStorageObj.hotelName,
-                    phone: $rootScope.localStorageObj.phone,
-                    saveMyPhone: function () {
-                        $rootScope.closeModifyMyPhoneModal();
+
+            init();
+            function init() {
+                //保存我的手机
+                if ($rootScope.localStorageObj) {
+                    $scope.my = {
+                        hotelName: $rootScope.localStorageObj.hotelName,
+                        phone: $rootScope.localStorageObj.phone,
+                        saveMyPhone: function () {
+                            $rootScope.closeModifyMyPhoneModal();
+                        }
                     }
                 }
             }
+
+            $scope.$on('my_refresh', function () {
+                init();
+            })
 
         }]);
