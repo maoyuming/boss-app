@@ -87,6 +87,11 @@
             $scope.goChatList = function goChatList() {
                 $state.go("tab.chat");
             }
+
+            //搜索查询
+            $scope.showSearchView = function showSearchView() {
+              $state.go('search-index');
+            };
         }
 })();
 

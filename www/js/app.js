@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'dtk.order', 'dtk.home', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'dtk.order', 'dtk.home', 'ngCordova','dtk.search'])
 
-    .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast, MessageService, UserService) {
+    .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast, MessageService, UserService,SearchService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -35,11 +35,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }).then(function (modal) {
             $rootScope.registModal = modal;
         });
+        //搜索界面
+        $ionicModal.fromTemplateUrl('templates/search/index.html', {
+          scope: $rootScope,
+          animation: 'slide-in-up',
+          hardwareBackButtonClose: false,
+          id: "login"
+        }).then(function (modal) {
+          $rootScope.searchModal = modal;
+        });
+
+        $rootScope.openSearchModal = function () {
+          $rootScope.searchModal.show();
+        };
+
         $rootScope.openRegistModal = function () {
             $rootScope.registModal.show();
         };
         $rootScope.closeRegistModal = function () {
-            $rootScope.registModal.hide();
+          $rootScope.registModal.hide();
+        };
+
+        $rootScope.closeSearchModal = function () {
+          $rootScope.searchModal.hide();
         };
 
         //登录界面
@@ -165,6 +183,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                     }, function (error) {
                         $cordovaToast.showLongBottom('提交验证码失败');
                     });
+            },
+            //  doSearch:function () {
+            //   var result = SearchService.doSearch({
+            //     type: 'hotel',
+            //     keyword: ''
+            //   });
+            //    $rootScope.result = result;
+            //    $rootScope.isShowSubChannels = false;
+            // },
+            //搜索查询
+            showSearchView : function()  {
+              $rootScope.closeRegistModal();
+              $state.go("search-index");
             },
             //登录系统
             submit: function () {
@@ -361,7 +392,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         controller: 'MyCtrl'
                     }
                 }
-            });
+            })
+            .state('search-index', {
+              url: '/search/index/:hotelName',
+              templateUrl: 'templates/search/index.html',
+              controller: 'SearchCtrl'
+            })
+
+        ;
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/home');
 
@@ -420,3 +458,4 @@ angular.module('starter.controllers', []);
 angular.module('starter.services', []);
 angular.module('dtk.order', []);
 angular.module('dtk.home', []);
+angular.module('dtk.search', []);
