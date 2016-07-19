@@ -3,18 +3,23 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top   tabs-color-assertive">
-    <ion-tab title="首页" icon-off="ion-ios-home" icon-on="ion-ios-home" href="#/tab/home">
+<ion-tabs class="tabs-icon-top tabs-color-active-assertive">
+    <ion-tab title="首页" icon-off="ion-ios-home-outline" icon-on="ion-ios-home-outline" href="#/tab/home">
         <ion-nav-view name="tab-home"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="订单" icon-off="ion-android-list" icon-on="ion-android-list" href="#/tab/orders">
+    <ion-tab title="订单" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper-outline" href="#/tab/orders">
         <ion-nav-view name="tab-orders"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="财务" icon-off="ion-ios-calculator" icon-on="ion-ios-calculator" href="#/tab/settlement">
+    <ion-tab title="财务" icon-off="ion-ios-calculator-outline" icon-on="ion-ios-calculator-outline" href="#/tab/settlement">
         <ion-nav-view name="tab-settlement"></ion-nav-view>
     </ion-tab>
+
+    <ion-tab title="消息" icon-off="icon ion-ios-chatboxes-outline" icon-on="icon ion-ios-chatboxes-outline" href="#/tab/chats">
+        <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
+
 
     <ion-tab title="我的" icon-off="icon ion-ios-person-outline" icon-on="icon ion-ios-person-outline" href="#/tab/my">
         <ion-nav-view name="tab-my"></ion-nav-view>

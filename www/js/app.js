@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'dtk.order', 'dtk.home', 'ngCordova','dtk.search'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'dtk.order', 'dtk.home', 'ngCordova','dtk.message','dtk.search'])
 
     .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast, MessageService, UserService,SearchService) {
         $ionicPlatform.ready(function () {
@@ -250,6 +250,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'd
                                                         LoginInfo.setLoginInfo($rootScope.localStorageObj);
                                                         $state.go("tab.home");
                                                         $rootScope.$broadcast('home_refresh');
+                                                        $rootScope.$broadcast('my_refresh');
                                                         $rootScope.closeLoginModal();
                                                     });
                                             })
@@ -384,12 +385,12 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'd
                 }
             })
 
-            .state('tab.chat', {
+            .state('tab.chats', {
                 url: '/chats',
                 views: {
-                    'tab-my': {
+                    'tab-chats': {
                         templateUrl: 'templates/tab-chats.html',
-                        controller: 'MyCtrl'
+                        controller: 'MessageCtrl'
                     }
                 }
             })
@@ -459,3 +460,4 @@ angular.module('starter.services', []);
 angular.module('dtk.order', []);
 angular.module('dtk.home', []);
 angular.module('dtk.search', []);
+angular.module('dtk.message', []);

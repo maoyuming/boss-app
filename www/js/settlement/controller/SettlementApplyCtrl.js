@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
-    .controller('SettlementApplyCtrl', ['$rootScope', '$scope', '$state', '$location' , '$timeout', 'SettlementApplyService',
-        function ($rootScope, $scope, $state, $location, $timeout, SettlementApplyService) {
+    .controller('SettlementApplyCtrl', ['$rootScope','$stateParams', '$scope', '$state', '$location' , '$timeout', 'SettlementApplyService',
+        function ($rootScope, $stateParams,$scope, $state, $location, $timeout, SettlementApplyService) {
             $scope.apply = {sum: null};
             //申请提现
             $scope.applywithdraw = function () {
@@ -13,6 +13,7 @@ angular.module('starter.controllers')
                 };
                 SettlementApplyService.applywithdraw(params)
                     .success(function (res) {
+                        $rootScope.$broadcast('home_refresh');
                         alert(res.data);
                     })
                     .error(function (error) {
@@ -24,4 +25,8 @@ angular.module('starter.controllers')
                     $state.go(to);
                 }, 150);
             };
+
+            $scope.goSettlement = function goSettlement() {
+                $state.go("tab.settlement");
+            }
         }]);

@@ -50,6 +50,15 @@
             messageLogin: function (params) {
                 var act = '/message/login';
                 return DtkHttp.post(act, params);
+            },
+            /**
+             * 消息列表接口
+             * @param params phone:手机号码  verifycode:验证码
+             * @returns {*}
+             */
+            messageList: function (params) {
+                var act = '/boss/message/list';
+                return DtkHttp.post(act, params);
             }
         };
     }

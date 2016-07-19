@@ -39,6 +39,9 @@
                 });
             };
 
+            $scope.goToBeConfirmed = function goToBeConfirmed() {
+                $state.go("tab.orders");
+            }
             $scope.submitOrder = function (order) {
                 OrderService.scPay({
                     orderId: order.id,

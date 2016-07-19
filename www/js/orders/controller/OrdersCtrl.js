@@ -149,6 +149,7 @@
         $scope.gotoOrderDetail = function gotoOrderDetail(orderId) {
             $state.go("tab.orderDetail", {orderId: orderId});
         }
+
     };
 
 })();
