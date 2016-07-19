@@ -186,7 +186,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                                                         LoginInfo.setLoginInfo($rootScope.localStorageObj);
                                                         $state.go("tab.home");
                                                         $rootScope.$broadcast('home_refresh');
-                                                        $rootScope.$broadcast('my_refresh');
                                                         $rootScope.closeRegistModal();
                                                     });
                                         })
