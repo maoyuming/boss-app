@@ -151,7 +151,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                                             token: res.data.data
                                         }
                                         LoginInfo.setLoginInfo($rootScope.localStorageObj);
-                                        $rootScope.closeRegistModal();
+                                        UserService.hotelList(res.data.data)
+                                            .success(function (res) {
+                                                var hotelId = res.data[0].hotelId;
+                                                var hotelName = res.data[0].hotelName;
+                                                $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+                                                $rootScope.localStorageObj.hotelId = hotelId;
+                                                $rootScope.localStorageObj.hotelName = hotelName;
+                                                LoginInfo.setLoginInfo($rootScope.localStorageObj);
+
+                                                UserService.getLoginUser()
+                                                    .success(function (res) {
+                                                        $rootScope.localStorageObj = LoginInfo.getLoginInfo();
+                                                        $rootScope.localStorageObj.bossId = res.data.bossId;
+                                                        $rootScope.localStorageObj.phone = res.data.phone;
+                                                        LoginInfo.setLoginInfo($rootScope.localStorageObj);
+                                                        $state.go("tab.home");
+                                                        $rootScope.$broadcast('home_refresh');
+                                                        $rootScope.$broadcast('my_refresh');
+                                                        $rootScope.closeRegistModal();
+                                                    });
+                                        })
                                     } else {
                                         var errorMessage = res.errorMessage ? res.errorMessage : "获取用户凭证失败";
                                         $cordovaToast.showLongBottom(errorMessage);
@@ -226,7 +246,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                                             .error(function (error) {
                                                 console.log('error = ' + error);
                                             });
-
 
                                     } else {
                                         var errorMessage = res.errorMessage ? res.errorMessage : "获取用户凭证失败";
