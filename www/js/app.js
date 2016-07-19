@@ -357,6 +357,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
                 else {
                     $ionicHistory.goBack();
+                    if (!$rootScope.localStorageObj) {
+                        $rootScope.openLoginModal();
+                    }
                 }
             }, priority);
         };
