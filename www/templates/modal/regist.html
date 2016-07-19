@@ -27,7 +27,10 @@
             </div>
             <div class="item item-input-inset">
                 <label class="item-input-wrapper">
-                    <input type="text" class="crm-input" placeholder="酒店名称" ng-model="login.hotelName">
+                  <input type="hidden"   ng-model="login.hotelId" />
+                    <input type="text" class="crm-input" placeholder="酒店名称" ng-model="login.hotelName"
+                          ng-click="login.showSearchView()"  ng-readonly="true"  >
+
                 </label>
             </div>
         </div>

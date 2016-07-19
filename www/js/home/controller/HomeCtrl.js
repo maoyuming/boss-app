@@ -88,6 +88,10 @@
                 $state.go("tab.chats");
             }
 
+            //搜索查询
+            $scope.showSearchView = function showSearchView() {
+              $state.go('search-index');
+            };
             $scope.doRefresh = function() {
                 $state.reload();
             };

@@ -1,0 +1,63 @@
+<ion-view>
+  <!--<ion-header-bar align-title="center" class="bar-assertive">-->
+    <!--<button class="button button-clear" ng-click="closeSearchModal()">-->
+      <!--<i class="icon ion-ios-arrow-thin-left"></i>-->
+    <!--</button>-->
+    <!--<h1 class="title">搜索</h1>-->
+  <!--</ion-header-bar>-->
+  <ion-header-bar align-title="center" class="bar-light">
+    <div class="buttons">
+      <button class="button button-clear button-positive icon ion-android-arrow-back" ng-click="$ionicGoBack()"></button>
+    </div>
+    <h1 class="title">搜索</h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <div class="list">
+      <!--<form ng-submit="doSearch(keyword, true)">-->
+
+        <label class="item item-input" auto-focus>
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="搜索 农家乐" ng-model="keyword"  ng-change="doSearch(keyword, false)">
+          <!--<button class="button button-small"  ng-click="selectMyHotel(keyword)">-->
+            <!--使用-->
+          <!--</button>-->
+        </label>
+
+
+      <!--</form>-->
+
+      <div class="row" ng-show="!isShowSubChannels">
+        <div class="col">
+          <div   style="border:0;">没有匹配的农家乐？
+            <a   ng-click="selectMyHotel(keyword)">
+            新建
+            </a>农家乐
+          </div>
+          <!--农家院-->
+          <div class="list card" ng-repeat="hotel in  result" ng-click="selectHotel(hotel)">
+            <div>
+              <div class="item">
+                <h2>{{hotel.hotelName}}</h2>
+                <p>{{hotel.detailAddr}}</p>
+              </div>
+
+              <div class="item item-image">
+                <!--<img holder data-src="holder.js/100px200">-->
+                <img ng-src="{{hotel.pics[0].url}}">
+              </div>
+
+              <!--<div class="item item-body" style="padding: 4px 16px 4px 16px">-->
+                <!--<p style="margin: 0">-->
+                  <!--<i class="icon ion-ios-heart"></i>-->
+                  <!--<a href="#" class="subdued">{{hotel.distanceText}}</a>-->
+                  <!--&lt;!&ndash;<a href="#" class="subdued">5 Comments</a>&ndash;&gt;-->
+                <!--</p>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
