@@ -8,10 +8,10 @@
     .module('dtk.search')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$scope', '$rootScope','$http', '$timeout', '$state', 'SearchService'];
+  SearchCtrl.$inject = ['$scope', '$rootScope','$http', '$timeout', '$state','$cordovaToast', 'SearchService'];
 
   /* @ngInject */
-  function SearchCtrl($scope, $rootScope,$http, $timeout, $state, SearchService) {
+  function SearchCtrl($scope, $rootScope,$http, $timeout, $state,$cordovaToast, SearchService) {
     var vm = this;
     vm.title = 'SearchCtrl';
     activate();
@@ -20,7 +20,7 @@
 
     function activate() {
       console.log('SearchCtrl.activate');
-      
+
       $scope.gotoPage = function (to) {
         $timeout(function () {
           $scope.keyword = '';
@@ -82,6 +82,12 @@
         $rootScope.login.hotelName = hotel.hotelName;
       };
       $scope.selectMyHotel = function(keyword){
+
+        if(keyword==null){
+          $cordovaToast.showLongBottom("请输入农家乐名称");
+          return;
+        }
+
 
         console.log('SearchCtrl.selectMyHotel');
         $rootScope.openRegistModal();

@@ -1,19 +1,22 @@
-<ion-view>
+<ion-view view-title="搜索匹配农家乐">
+  <ion-nav-buttons side="left" >
+    <button ng-click="selectMyHotel()" class="button button-clear icon ion-android-arrow-back"></button>
+  </ion-nav-buttons>
   <!--<ion-header-bar align-title="center" class="bar-assertive">-->
     <!--<button class="button button-clear" ng-click="closeSearchModal()">-->
       <!--<i class="icon ion-ios-arrow-thin-left"></i>-->
     <!--</button>-->
     <!--<h1 class="title">搜索</h1>-->
   <!--</ion-header-bar>-->
-  <ion-header-bar align-title="center" class="bar-light">
-    <div class="buttons">
-      <button class="button button-clear button-positive icon ion-android-arrow-back" ng-click="$ionicGoBack()"></button>
-    </div>
-    <h1 class="title">搜索</h1>
-  </ion-header-bar>
+  <!--<ion-header-bar align-title="center" class="bar-light">-->
+    <!--<div class="buttons">-->
+      <!--<button class="button button-clear button-positive icon ion-android-arrow-back" ng-click="$ionicGoBack()"></button>-->
+    <!--</div>-->
+    <!--<h1 class="title">搜索</h1>-->
+  <!--</ion-header-bar>-->
   <ion-content class="has-header">
     <div class="list">
-      <!--<form ng-submit="doSearch(keyword, true)">-->
+      <form ng-submit="doSearch(keyword, true)">
 
         <label class="item item-input" auto-focus>
           <i class="icon ion-search placeholder-icon"></i>
@@ -24,7 +27,7 @@
         </label>
 
 
-      <!--</form>-->
+      </form>
 
       <div class="row" ng-show="!isShowSubChannels">
         <div class="col">

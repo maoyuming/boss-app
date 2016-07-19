@@ -150,6 +150,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 $rootScope.closeLoginModal();
                 $rootScope.openRegistModal();
             },
+            //跳转到登录页面
+            forwardLogin: function () {
+                $rootScope.openLoginModal();
+                $rootScope.closeRegistModal();
+            },
             //注册系统
             regist: function () {
                 var submitResult = false;//提交成功或者失败
@@ -161,33 +166,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                     hotelId: $rootScope.login.hotelId
                 }
                 if($rootScope.login.loginname==null){
-                    $rootScope.showAlert("请输入注册的手机号");
+                    $cordovaToast.showLongBottom("请输入注册的手机号");
                     return;
                 }
                 if (!Tools.isMobileNo($rootScope.login.loginname)) {
                     console.log('手机号码输入不合法');
-                    $rootScope.showAlert("手机号码输入不合法");
+                    $cordovaToast.showLongBottom("手机号码输入不合法");
                     return;
                 }
                 if($rootScope.login.verifycode==null){
-                    $rootScope.showAlert("请输入验证码");
+                    $cordovaToast.showLongBottom("请输入验证码");
                     return;
                 }
                 if($rootScope.login.verifycode.length!=4){
-                    $rootScope.showAlert("请输入4位验证码");
+                    $cordovaToast.showLongBottom("请输入4位验证码");
                     return;
                 }
                 if($rootScope.login.salePhone==null){
-                    $rootScope.showAlert("请输入销售的手机号");
+                    $cordovaToast.showLongBottom("请输入销售的手机号");
                     return;
                 }
                 if (!Tools.isMobileNo($rootScope.login.salePhone)) {
                     console.log('手机号码输入不合法');
-                    $rootScope.showAlert("销售手机号码输入不合法");
+                    $cordovaToast.showLongBottom("销售手机号码输入不合法");
                     return;
                 }
                 if($rootScope.login.hotelName==null){
-                    $rootScope.showAlert("请选择酒店");
+                    $cordovaToast.showLongBottom("请选择酒店");
                     return;
                 }
                 //注册
@@ -199,13 +204,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         } else {
                             submitResult = false;
                             var errorMessage = res.data.errorMessage ? res.data.errorMessage : "注册失败";
-                            // $cordovaToast.showLongBottom(errorMessage);
-                            $rootScope.showAlert(errorMessage);
+                            $cordovaToast.showLongBottom(errorMessage);
+                            // $rootScope.showAlert(errorMessage);
                         }
                     }, function (error) {
                         submitResult = false;
-                        // $cordovaToast.showLongBottom('提交验证码失败');
-                        $rootScope.showAlert('提交验证码失败');
+                        $cordovaToast.showLongBottom('提交验证码失败');
+                        // $rootScope.showAlert('提交验证码失败');
                     })
                     .then(function () {
                         if (submitResult) {
