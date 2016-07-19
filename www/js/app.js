@@ -139,7 +139,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                     phone: $rootScope.login.loginname,
                     verifycode: $rootScope.login.verifycode,
                     salePhone: $rootScope.login.salePhone,
-                    hotelName: $rootScope.login.hotelName
+                    hotelName: $rootScope.login.hotelName,
+                    hotelId: $rootScope.login.hotelId
                 }
                 //注册
                 UserService.userRegister(params)
