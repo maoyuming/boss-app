@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'dtk.order', 'dtk.home', 'ngCordova','dtk.message','dtk.search'])
 
-    .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast,$ionicPopup, MessageService, UserService,SearchService) {
+    .run(function ($rootScope, $state, $ionicPlatform, $ionicModal, $timeout, $cordovaToast, MessageService, UserService,SearchService) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -35,19 +35,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }).then(function (modal) {
             $rootScope.registModal = modal;
         });
-        //搜索界面
-        $ionicModal.fromTemplateUrl('templates/search/index.html', {
-          scope: $rootScope,
-          animation: 'slide-in-up',
-          hardwareBackButtonClose: false,
-          id: "login"
-        }).then(function (modal) {
-          $rootScope.searchModal = modal;
-        });
 
-        $rootScope.openSearchModal = function () {
-          $rootScope.searchModal.show();
-        };
+
 
         $rootScope.openRegistModal = function () {
             $rootScope.registModal.show();
@@ -56,9 +45,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           $rootScope.registModal.hide();
         };
 
-        $rootScope.closeSearchModal = function () {
-          $rootScope.searchModal.hide();
-        };
 
         //登录界面
         $ionicModal.fromTemplateUrl('templates/modal/login-modal.html', {
