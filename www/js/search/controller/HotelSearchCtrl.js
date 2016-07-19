@@ -95,11 +95,11 @@
         $rootScope.login.hotelName = keyword;
       };
       $scope.goRegister = function(){
-        
+
         console.log('SearchCtrl.selectMyHotel');
         $rootScope.openRegistModal();
-        $rootScope.login.hotelId = null;
-        $rootScope.login.hotelName = keyword;
+        // $rootScope.login.hotelId = null;
+        // $rootScope.login.hotelName = null;
       };
     }
   }
