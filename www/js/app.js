@@ -45,7 +45,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           $rootScope.registModal.hide();
         };
 
-
         //登录界面
         $ionicModal.fromTemplateUrl('templates/modal/login-modal.html', {
             scope: $rootScope,
@@ -335,6 +334,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         };
         /*****************************系统登录modal - end **********************************/
+        /**********************再按一次退出系统**************************/
+        //双击退出
+        var _backExit;
+
+        function registBackExit(priority) {
+            _backExit && _backExit();
+            _backExit = $ionicPlatform.registerBackButtonAction(function (e) {
+                //判断处于哪个页面时双击退出
+                if ($state.current.name == 'tab.home') {
+                    if ($rootScope.backButtonPressedOnceToExit) {
+                        ionic.Platform.exitApp();
+                    } else {
+                        $rootScope.backButtonPressedOnceToExit = true;
+                        $cordovaToast.showShortBottom('再按一次退出系统');
+                        setTimeout(function () {
+                            $rootScope.backButtonPressedOnceToExit = false;
+                        }, 2000);
+                    }
+                    //e.preventDefault();
+                    //return false;
+                }
+                else {
+                    $ionicHistory.goBack();
+                }
+            }, priority);
+        };
+        /**********************再按一次退出系统**************************/
+
+        //注册安卓返回按钮
+        registBackExit(101);
     })
 
     .config(function ($stateProvider, $ionicConfigProvider, $urlRouterProvider, $httpProvider) {
